@@ -22,7 +22,7 @@
                 <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500" href="#">保護猫一覧</a></li>
                 <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500" href="/blogs">サービス</a></li>
                 <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500" href="#">料金</a></li>
-                <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500" href="#">お問い合わせ</a></li>
+                <li><a class="text-sm text-blueGray-400 hover:text-blueGray-500" href="#">保護団体の皆様へ</a></li>
             </ul>
             <div>
                 <a class="mr-2 inline-block px-4 py-3 text-xs text-blue-500 hover:text-blue-600 leading-none border border-blue-200 hover:border-blue-300 rounded" href="/contact">ログイン</a>
