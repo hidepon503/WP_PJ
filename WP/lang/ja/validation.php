@@ -248,5 +248,13 @@ return [
         'username' => 'ユーザー名',
         'year' => '年',
     ],
+    'attributes' =>[
+        'name' => '名前',
+        'name_kana' => '名前(カナ)',
+        'phone' => '電話番号',
+        'email' => 'メールアドレス',
+        'body' => 'お問い合わせ内容'
+    ]
+    
 
 ];
