@@ -25,7 +25,9 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
-
+Route::get('/uhome', function () {
+    return view('layouts.uhome');
+});
 
 
 // breeze のログインまわりのルーティング
