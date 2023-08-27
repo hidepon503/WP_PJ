@@ -6,6 +6,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+
 
 
 /*
@@ -25,16 +27,18 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/uhome', function () {
-    return view('layouts.uhome');
+Route::get('/index', function () {
+    return view('user.index');
 });
+
 
 
 // breeze のログインまわりのルーティング
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('user.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// アカウント管理画面
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
