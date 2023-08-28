@@ -40,6 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+        'manager' => [
+            'driver' => 'session',
+            'provider' => 'managers',
+        ],
+        'government' => [
+            'driver' => 'session',
+            'provider' => 'government',
+        ],
     ],
 
     /*
@@ -64,6 +76,19 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+        'managers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Manager::class,
+        ],
+        'government' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Government::class,
+        ],
+
 
         // 'users' => [
         //     'driver' => 'database',
@@ -96,6 +121,24 @@ return [
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'admins' => [ // ← これを追加します
+        'provider' => 'admins',
+        'table' => 'password_reset_tokens', // ← Admin用のリセットトークンテーブル名を適切に変更してください
+        'expire' => 60,
+        'throttle' => 60,
+        ],
+        'managers' => [ // ← これを追加します
+        'provider' => 'managers',
+        'table' => 'password_reset_tokens', // ← Manager用のリセットトークンテーブル名を適切に変更してください
+        'expire' => 60,
+        'throttle' => 60,
+        ],
+        'government' => [ // ← これを追加します
+        'provider' => 'government',
+        'table' => 'password_reset_tokens', // ← Government用のリセットトークンテーブル名を適切に変更してください
+        'expire' => 60,
+        'throttle' => 60,
         ],
     ],
 

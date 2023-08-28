@@ -4,7 +4,7 @@
 <section class="py-8">
     <div class="container px-4 mx-auto">
         <div class="py-4 bg-white rounded">
-            <form action="{{ route('users.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="flex px-6 pb-4 border-b">
                     <h3 class="text-xl font-bold">ユーザ登録</h3>
@@ -44,6 +44,11 @@
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="password_confirmation">パスワード(確認)</label>
                         <input id="password_confirmation" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="password" name="password_confirmation">
+                    </div>
+
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium mb-2" for="tel">TEL</label>
+                        <input id="tel" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="tel" name="tel" value="{{ old('tel') }}">
                     </div>
 
                     <div class="mb-6">

@@ -5,7 +5,7 @@
 <section class="bg-gray-100 pt-2">
   <div class="container mx-auto">
     <p class="text-left px-4 pt-2 text-gray-400"><a href="#" class="text-blue-600 hover:underline">ホーム</a><span class="px-2">&gt</span>お問い合わせ</p>
-    <h1 class="mt-2 text-4xl font-bold font-heading h-40 text-center p-12">動物保護団体様専用<br>入会申請フォーム</h1>
+    <h1 class="mt-2 text-4xl font-bold font-heading h-40 text-center p-12">お問い合わせフォーム</h1>
   </div>
 </section>
 
@@ -38,7 +38,7 @@
           @endif
         </div>
         <div class="mb-4">
-          <label for=name class="block text-left p-1 my-1 font-medium">お名前<span class="text-white text-xs bg-yellow-400 mx-2 py-1 px-2">必須</span></label>
+          <label for=name class="block text-left p-1 my-1 font-medium">代表者指名<span class="text-white text-xs bg-yellow-400 mx-2 py-1 px-2">必須</span></label>
           <input id="name" name="name" class="w-full p-4 text-xs leading-none bg-blueGray-50 rounded outline-none border" type="text" placeholder="例）田中太郎" value={{ old('name') }}>
           @if($errors->has('name'))
             <p class="text-pink-400 text-xs mt-2">{{ $errors->first('name') }}</p>
