@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
+class ManagerAuthController extends Controller
 {
     // ログイン画面表示
     public function showLoginForm()
     {
-    return view('admin/login');
+    return view('manager/login');
     }
 
     // ログイン処理
@@ -24,13 +24,13 @@ class AuthController extends Controller
 
         // ログイン情報が正しいか
         // Auth::attemptメソッドでログイン情報が正しいか検証
-        if (Auth::guard('admin')->attempt($credentials)) {
+        if (Auth::guard('manager')->attempt($credentials)) {
             // セッションを再生成する処理(セキュリティ対策)
             $request->session()->regenerate();
 
             // ミドルウェアに対応したリダイレクト(後述)
-            // 下記はredirect('/admin/blogs')に類似
-            return view('admin.index');
+            // 下記はredirect('/manager/blogs')に類似
+            return view('manager.index');
 
         }
 
@@ -55,6 +55,6 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         // ログアウト後のリダイレクト先を指定
-        return redirect('/admin/login');
+        return redirect('/manager/login');
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Http\Requests\Admin\StoreAdminRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -15,7 +16,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.cats.index');
+        return view('admin.index');
     }
 
     /**
@@ -40,14 +41,12 @@ class AdminController extends Controller
         if ($request->hasFile('image')) {
             $validated['image'] = $request->file('image')->store('admins', 'public');
         }
+        // Adminアカウントを新規作成し、インスタンスを$adminに代入
+        $admin = Admin::create($validated);
+        // 作成したAdminアカウントでログイン
+        Auth::guard('admin')->login($admin);
 
-
-        Admin::create($validated);
-
-
-        return back()->with('success', 'ユーザー登録が完了しました。');
-
-
+        return redirect()->route('admin.index')->with('success', 'ユーザー登録が完了しました。');
     }
 
     /**

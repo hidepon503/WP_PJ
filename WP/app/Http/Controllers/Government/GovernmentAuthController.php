@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Government;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreGovernmentRequest;
 
-class AuthController extends Controller
+class GovernmentAuthController extends Controller
 {
     // ログイン画面表示
     public function showLoginForm()
     {
-    return view('admin/login');
+    return view('government/login');
     }
 
     // ログイン処理
@@ -24,13 +25,13 @@ class AuthController extends Controller
 
         // ログイン情報が正しいか
         // Auth::attemptメソッドでログイン情報が正しいか検証
-        if (Auth::guard('admin')->attempt($credentials)) {
+        if (Auth::guard('government')->attempt($credentials)) {
             // セッションを再生成する処理(セキュリティ対策)
             $request->session()->regenerate();
 
             // ミドルウェアに対応したリダイレクト(後述)
-            // 下記はredirect('/admin/blogs')に類似
-            return view('admin.index');
+            // 下記はredirect('/government/blogs')に類似
+            return view('government.index');
 
         }
 
@@ -46,7 +47,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         // ログアウト処理
-        Auth::logout();
+        Auth::guard('government')->logout();
 
         // セッションを再生成する処理(セキュリティ対策)
         // 現在のセッションIDを無効化
@@ -55,6 +56,6 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         // ログアウト後のリダイレクト先を指定
-        return redirect('/admin/login');
+        return redirect('/government/login');
     }
 }
