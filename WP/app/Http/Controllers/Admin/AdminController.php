@@ -37,10 +37,10 @@ class AdminController extends Controller
         $validated['password'] = Hash::make($validated['password']);
         // telがフォームから正しく受け取られていることを確認
         $validated['tel'] = $request->input('tel');
-        // 画像がアップロードされている場合のみ処理を行う
-        if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('admins', 'public');
-        }
+        // // 画像がアップロードされている場合のみ処理を行う
+        // if ($request->hasFile('image')) {
+        //     $validated['image'] = $request->file('image')->store('admins', 'public');
+        // }
         // Adminアカウントを新規作成し、インスタンスを$adminに代入
         $admin = Admin::create($validated);
         // 作成したAdminアカウントでログイン

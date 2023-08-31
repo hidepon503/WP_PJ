@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name')->comment('行政機関名');
             $table->string('email')->unique()->notnull()->comment('メールアドレス');
             $table->string('password')->notnull()->comment('パスワード');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
