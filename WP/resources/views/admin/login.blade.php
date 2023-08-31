@@ -15,7 +15,7 @@
     <div class="container px-4 mx-auto">
       <div class="flex max-w-md mx-auto flex-col text-center">
         <div class="mt-12 mb-8 p-8 bg-white rounded shadow">
-          <h1 class="mb-6 text-3xl">管理者ログイン</h1>
+          <h1 class="mb-6 text-3xl">動物保護団体専用<br>ログインフォーム</h1>
 
           @if($errors->any())
             <div class="mb-8 py-4 px-6 border border-red-300 bg-red-50 rounded">

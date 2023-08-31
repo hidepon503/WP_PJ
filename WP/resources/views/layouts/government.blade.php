@@ -90,7 +90,7 @@
                         <span>設定</span>
                     </a>
 
-                    <form action="{{ route('logout') }}" method="POST">
+                    <form action="{{ ('/government/logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="w-full flex items-center pl-3 py-3 pr-2 text-gray-50 hover:bg-gray-900 rounded">
               <span class="inline-block mr-4">
