@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="61r_hEm0DIJwqyWoz0NV" name="ページ1">
-        <mxGraphModel dx="2280" dy="1964" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2467" dy="2014" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -10,29 +10,26 @@
                 <mxCell id="624" value="" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-360" y="-276" width="990" height="530" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="不動産企業" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
-                    <mxGeometry x="67.5" y="2242" width="30" height="60" as="geometry"/>
-                </mxCell>
-                <mxCell id="4" value="既存の飼い主" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
-                    <mxGeometry x="67.5" y="2142" width="30" height="60" as="geometry"/>
+                <mxCell id="873" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.016;entryY=0.456;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5" target="65">
+                    <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
                 <mxCell id="5" value="運営" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
-                    <mxGeometry x="197.5" y="1864" width="30" height="60" as="geometry"/>
+                    <mxGeometry x="-675" y="1520" width="30" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="65" value="" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="342.5" y="1754" width="340" height="510" as="geometry"/>
+                    <mxGeometry x="-346.32000000000005" y="1320" width="340" height="510" as="geometry"/>
                 </mxCell>
                 <mxCell id="66" value="1：ログイン" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="1784" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="1350" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="67" value="2.迷子ネコ検索&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%221%EF%BC%9A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%22%20style%3D%22shape%3Dext%3Bdouble%3D1%3Brounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22390%22%20y%3D%221280%22%20width%3D%22270%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="1844" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="1410" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="68" value="3.迷子ねこ一覧取得(絞り込み可）" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="1904" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="1470" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="69" value="４.飼い主情報閲覧" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="1964" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="1530" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="818" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="312" target="759" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -123,7 +120,7 @@
                         <mxRectangle width="140" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="824" style="edgeStyle=none;html=1;strokeColor=#0e8088;fontColor=#000000;startArrow=ERoneToMany;startFill=0;endArrow=ERmandOne;endFill=0;fillColor=#b0e3e6;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" edge="1" source="135">
+                <mxCell id="824" style="edgeStyle=none;html=1;strokeColor=#0e8088;fontColor=#000000;startArrow=ERoneToMany;startFill=0;endArrow=ERmandOne;endFill=0;fillColor=#b0e3e6;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="135" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1520" y="-186" as="sourcePoint"/>
                         <mxPoint x="1320" y="-200" as="targetPoint"/>
@@ -1170,22 +1167,22 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="574" value="動物愛護センター（行政）" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
-                    <mxGeometry x="197.5" y="2424" width="30" height="60" as="geometry"/>
+                    <mxGeometry x="-560" y="2044" width="30" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="575" value="" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="342.5" y="2314" width="340" height="280" as="geometry"/>
+                    <mxGeometry x="-346.32000000000005" y="1944" width="340" height="280" as="geometry"/>
                 </mxCell>
                 <mxCell id="576" value="1：ログイン" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="2344" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="1974" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="577" value="2.迷子ネコ検索&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%221%EF%BC%9A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%22%20style%3D%22shape%3Dext%3Bdouble%3D1%3Brounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22390%22%20y%3D%221280%22%20width%3D%22270%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="2404" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="2034" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="578" value="3.迷子ねこ一覧取得(絞り込み可）" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="2464" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="2094" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="579" value="４.飼い主情報閲覧" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="2524" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="2154" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="580" value="AdminTable" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;" parent="1" vertex="1">
                     <mxGeometry x="880" y="1924" width="180" height="300" as="geometry"/>
@@ -1308,16 +1305,16 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="608" value="４.動物保護団体の登録承認" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="2024" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="1590" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="611" value="４.動物保護団体一覧取得" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="2090" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="1656" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="612" value="４.ユーザー一覧取得" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="2150" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="1716" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="613" value="お問合せ内容確認" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="367.5" y="2200" width="270" height="30" as="geometry"/>
+                    <mxGeometry x="-321.32000000000005" y="1766" width="270" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="58" style="edgeStyle=none;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.002;entryY=0.325;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="2" target="59" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -1591,15 +1588,15 @@
                         <mxRectangle width="140" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="870" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="743">
+                <mxCell id="870" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="743" vertex="1">
                     <mxGeometry y="120" width="180" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="871" value="4" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;" vertex="1" parent="870">
+                <mxCell id="871" value="4" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;" parent="870" vertex="1">
                     <mxGeometry width="40" height="30" as="geometry">
                         <mxRectangle width="40" height="30" as="alternateBounds"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="872" value="user_id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="870">
+                <mxCell id="872" value="user_id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" parent="870" vertex="1">
                     <mxGeometry x="40" width="140" height="30" as="geometry">
                         <mxRectangle width="140" height="30" as="alternateBounds"/>
                     </mxGeometry>
@@ -1770,7 +1767,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="836" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#6c8ebf;fontColor=#000000;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;fillColor=#dae8fc;exitX=1.002;exitY=-0.266;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" target="427" edge="1" source="170">
+                <mxCell id="836" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#6c8ebf;fontColor=#000000;startArrow=ERmandOne;startFill=0;endArrow=ERzeroToMany;endFill=0;fillColor=#dae8fc;exitX=1.002;exitY=-0.266;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="170" target="427" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="2327" y="384" as="sourcePoint"/>
                     </mxGeometry>
@@ -1844,7 +1841,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="868" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;shadow=1;strokeColor=#6c8ebf;fontColor=#000000;startArrow=ERzeroToMany;startFill=0;endArrow=ERmandOne;endFill=0;fillColor=#dae8fc;" parent="1" edge="1" source="255">
+                <mxCell id="868" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;shadow=1;strokeColor=#6c8ebf;fontColor=#000000;startArrow=ERzeroToMany;startFill=0;endArrow=ERmandOne;endFill=0;fillColor=#dae8fc;" parent="1" source="255" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1654" y="901" as="sourcePoint"/>
                         <mxPoint x="1520" y="901" as="targetPoint"/>

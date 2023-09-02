@@ -46,7 +46,7 @@ class ManagerAuthController extends Controller
     public function logout(Request $request)
     {
         // ログアウト処理
-        Auth::logout('manager')->logout();
+        Auth::guard('manager')->logout();
 
         // セッションを再生成する処理(セキュリティ対策)
         // 現在のセッションIDを無効化
@@ -55,6 +55,6 @@ class ManagerAuthController extends Controller
         $request->session()->regenerateToken();
 
         // ログアウト後のリダイレクト先を指定
-        return redirect('/manager/login');
+        return redirect()->route('manager.login');
     }
 }

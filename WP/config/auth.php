@@ -50,7 +50,7 @@ return [
         ],
         'government' => [
             'driver' => 'session',
-            'provider' => 'government',
+            'provider' => 'governments',
         ],
     ],
 
@@ -84,7 +84,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Manager::class,
         ],
-        'government' => [
+        'governments' => [
             'driver' => 'eloquent',
             'model' => App\Models\Government::class,
         ],
