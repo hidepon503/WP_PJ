@@ -5,18 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Cat extends Model
 {
     use HasFactory;
     protected $fillable = [
         'name',
+        'image',
         'age',
+        'kind_id',
+        'user_id',
         'birthday',
         'weight',
         'soracom',
         'hellolight',
         'apple',
-        'lostchild'
+        'lostchild',
+        'introduction',
+        'admin_id',
+        'gender_id',
     ];
 
     public function admin()
@@ -37,6 +44,11 @@ class Cat extends Model
     public function kind()
     {
         return $this->belongsTo('App\Models\Kind');
+    }
+
+    public function cat_image()
+    {
+        return $this->hasMany('App\Models\CatImage');
     }
 
 }

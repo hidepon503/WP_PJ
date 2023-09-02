@@ -1,13 +1,13 @@
 @extends('layouts.admin')
-
+@section('title', '保護猫新規登録')
 @section('content')
 <section class="py-8">
     <div class="container px-4 mx-auto">
         <div class="py-4 bg-white rounded">
-            <form action="{{ route('admin.blogs.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('store.cats') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="flex px-6 pb-4 border-b">
-                    <h3 class="text-xl font-bold">ブログ登録</h3>
+                    <h3 class="text-xl font-bold">保護猫登録</h3>
                     <div class="ml-auto">
                         <button type="submit" class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">保存</button>
                     </div>
@@ -26,10 +26,9 @@
                     @endif
                     <!-- ▲▲▲▲エラーメッセージ▲▲▲▲　-->
                     <div class="mb-6">
-                        <label class="block text-sm font-medium mb-2" for="title">タイトル</label>
-                        <input id="title" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="text" name="title" value="{{ old('title') }}">
+                        <label class="block text-sm font-medium mb-2" for="title">猫の名前</label>
+                        <input id="name" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" type="text" name="name" value="{{ old('name') }}">
                     </div>
-
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="image">画像</label>
                         <div class="flex items-end">
@@ -37,20 +36,35 @@
                             <input id="image" class="block w-full px-4 py-3 mb-2" type="file" accept='image/*' name="image" >
                         </div>
                     </div>
+                    {{-- admin_idの送信リクエスト --}}
+                    <input type="hidden" name="admin_id" value="{{ Auth::guard('admin')->user()->id }}">
+                    {{-- lostchild --}}
+                    
 
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium mb-2" for="body">本文</label>
-                        <textarea id="body" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" name="body" rows="5">{{ old('body') }}</textarea>
+
+
+                    <div class="my-6">
+                        <div class="flex items-">
+                            <label class="block mr-6 text-sm font-medium mb-2" for="image">性別</label>
+                            @foreach($genders as $gender)
+                                <label>
+                                    <input type="radio" name="gender_id" value="{{ $gender->id }}" required class="ml-10 mr-2">
+                                    {{ $gender->gender }}  <!-- 例えば、gendersテーブルがnameカラムを持っている場合 -->
+                                </label>
+                            @endforeach
+                        </div>
                     </div>
+                    
 
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium mb-2" for="category">カテゴリ</label>
+                    <div class="flex mb-6 ">
+                        {{-- 種類 --}}
+                        <label class="block text-sm font-medium mr-2" for="category">種類</label>
                         <div class="flex">
-                            <select id="category" class="appearance-none block pl-4 pr-8 py-3 mb-2 text-sm bg-white border rounded" name="">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                                <option>Option 3</option>
-                                <option>Option 4</option>
+                        {{-- kindsテーブルの情報を"foreachを利用してセレクトボックスに表示させる --}}
+                            <select id="category" class="appearance-none block pl-4 pr-8 py-3 mb-2 text-sm bg-white border rounded" name="kind_id">
+                                @foreach($kinds as $kind)
+                                    <option value="{{ $kind->id }}">{{ $kind->kind }}</option>
+                                @endforeach
                             </select>
                             <div class="pointer-events-none transform -translate-x-full flex items-center px-2 text-gray-500">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20">
@@ -58,17 +72,35 @@
                                 </svg>
                             </div>
                         </div>
+
+                        {{-- 体重 0.1kg単位--}}
+                        <label class="block text-sm font-medium mr-2" for="weight">体重</label>
+                        <div class="flex">
+                            <input id="weight" class=" px-4 py-3 text-sm bg-white border rounded" type="number" name="weight" value="{{ old('weight') }}" step="0.1">
+                            <span class="ml-2">kg</span>
+                        </div>
                     </div>
 
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium mb-2">登場するねこ</label>
-                        <select id="js-pulldown" class="mr-6 w-full" name="" multiple>
-                            <option selected>Option 1</option>
-                            <option>Option 2</option>
-                            <option selected>Option 3</option>
-                            <option>Option 4</option>
-                        </select>
+                    {{-- 年齢 --}}
+                    <div class="flex mb-6">
+                        <label class="block text-sm font-medium mr-2" for="age">年齢</label>
+                        <div class="flex">
+                            <input id="age" class=" px-4 py-3 text-sm bg-white border rounded" type="number" name="age" value="{{ old('age') }}">
+                            <span class="ml-2">歳</span>
+                        </div>
+                    {{-- 誕生日　不明も選択できるようにする --}}
+                        <label class="block text-sm font-medium ml-10 mr-2" for="birthday">誕生日</label>
+                        <div class="flex">
+                            <input id="birthday" class=" px-4 py-3 text-sm bg-white border rounded" type="date" name="birthday" value="{{ old('birthday') }}">
+                        </div>
                     </div>
+                        
+                    {{-- 紹介文 --}}
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium mb-2" for="introduction">紹介文</label>
+                        <textarea id="body" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" name="introduction" rows="5">{{ old('introduction') }}</textarea>
+                    </div>
+
                 </div>
             </form>
         </div>
@@ -76,8 +108,6 @@
 </section>
 
 <script>
-    // ねこちゃんたち追加
-    $('#js-pulldown').select2();
 
     // 画像プレビュー
     document.getElementById('image').addEventListener('change', e => {

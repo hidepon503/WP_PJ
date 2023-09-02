@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('genders', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('gender');
+            $table->string('gender');
             $table->timestamps();
         });
     }

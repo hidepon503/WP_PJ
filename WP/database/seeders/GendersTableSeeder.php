@@ -13,11 +13,11 @@ class GendersTableSeeder extends Seeder
     public function run(): void
     {
         $param = [
-            'gender' => '1'//男の子
+            'gender' => '♂'
         ];
         Gender::create($param);
         $param = [
-            'gender' => '2'//女の子
+            'gender' => '♀'
         ];
         Gender::create($param);
     }

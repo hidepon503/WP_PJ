@@ -14,17 +14,19 @@ return new class extends Migration
         Schema::create('cats', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('image')->notNull();
             $table->foreignId('admin_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->nullable();
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade')->nullable();
             $table->foreignId('gender_id')->constrained()->onDelete('cascade')->notNull();
             $table->foreignId('kind_id')->notNull();
             $table->integer('age')->notNull();
-            $table->integer('birthday')->notNull();
+            $table->date('birthday')->nullable();
             $table->integer('weight')->notNull();
+            $table->string('introduction')->nullable();
             $table->integer('soracom')->unique()->nullable();
             $table->integer('hellolight')->unique()->nullable();
             $table->integer('apple')->unique()->nullable();
-            $table->boolean('lostchild');
+            $table->boolean('lostchild')->default(false);
             $table->timestamps();
         });
     }
