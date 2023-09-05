@@ -1,16 +1,20 @@
-@extends('layouts.admin')
+@extends('layouts.default2')
+
+@section('title', '動物保護団体登録')
 
 @section('content')
 <section class="py-8">
     <div class="container px-4 mx-auto">
         <div class="py-4 bg-white rounded">
+            <div class="ml-auto flex justify-end">
+                <a href="/admin/login">
+                    <button  class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">ログイン</button>
+                </a>
+            </div>
             <form action="{{ route('admin.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="flex px-6 pb-4 border-b">
                     <h3 class="text-xl font-bold">動物保護団体登録</h3>
-                    <div class="ml-auto">
-                        <button type="submit" class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">登録</button>
-                    </div>
                 </div>
 
                 <div class="pt-4 px-6">
@@ -64,6 +68,9 @@
                         <textarea id="introduction" class="block w-full px-4 py-3 mb-2 text-sm bg-white border rounded" name="introduction" rows="2">{{ old('introduction') }}</textarea>
                     </div>
                 </div>
+                <div class="ml-auto flex justify-end">
+                    <button type="submit" class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">登録</button>
+                </div>
             </form>
         </div>
     </div>
@@ -83,3 +90,4 @@
     })
 </script>
 @endsection
+
