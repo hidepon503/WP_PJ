@@ -39,12 +39,12 @@
                     {{-- admin_idの送信リクエスト --}}
                     <input type="hidden" name="admin_id" value="{{ Auth::guard('admin')->user()->id }}">
                     {{-- lostchild --}}
-                    
+                    {{-- <input type="hidden" name="lostchild" value="{{ $cat->false }}"> --}}
 
 
 
-                    <div class="my-6">
-                        <div class="flex items-">
+                    <div class="flex mt-12 mb-6">
+                        <div class="flex items-center mr-20">
                             <label class="block mr-6 text-sm font-medium mb-2" for="image">性別</label>
                             @foreach($genders as $gender)
                                 <label>
@@ -53,10 +53,7 @@
                                 </label>
                             @endforeach
                         </div>
-                    </div>
                     
-
-                    <div class="flex mb-6 ">
                         {{-- 種類 --}}
                         <label class="block text-sm font-medium mr-2" for="category">種類</label>
                         <div class="flex">
@@ -72,6 +69,8 @@
                                 </svg>
                             </div>
                         </div>
+                    </div>
+                    <div class="flex my-6">
 
                         {{-- 体重 0.1kg単位--}}
                         <label class="block text-sm font-medium mr-2" for="weight">体重</label>
@@ -79,15 +78,8 @@
                             <input id="weight" class=" px-4 py-3 text-sm bg-white border rounded" type="number" name="weight" value="{{ old('weight') }}" step="0.1">
                             <span class="ml-2">kg</span>
                         </div>
-                    </div>
+                    
 
-                    {{-- 年齢 --}}
-                    <div class="flex mb-6">
-                        <label class="block text-sm font-medium mr-2" for="age">年齢</label>
-                        <div class="flex">
-                            <input id="age" class=" px-4 py-3 text-sm bg-white border rounded" type="number" name="age" value="{{ old('age') }}">
-                            <span class="ml-2">歳</span>
-                        </div>
                     {{-- 誕生日　不明も選択できるようにする --}}
                         <label class="block text-sm font-medium ml-10 mr-2" for="birthday">誕生日</label>
                         <div class="flex">

@@ -29,7 +29,6 @@ class CatRequest extends FormRequest
             'gender_id' => 'required|integer|exists:genders,id',
             'kind_id' => 'required|integer|exists:kinds,id', // ここではexistsルールは追加していませんが、必要に応じて追加してください。
             'weight' => 'required|numeric|min:0',
-            'age' => 'required|integer|min:0',
             'birthday' => 'nullable|date',
             'introduction' => 'nullable|string',
             // その他のユニークなIDのバリデーションルール

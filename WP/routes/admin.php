@@ -30,15 +30,13 @@ Route::middleware('auth:admin')->group(function(){
     // 猫情報登録処理
     Route::post('/cats/create',[CatController::class, 'store'])->name('store.cats');
     // 猫情報詳細画面表示
-    Route::get('/cats/{id}',[CatController::class, 'show'])->name('show.cats');
+    Route::get('/cats/{cat}',[CatController::class, 'show'])->name('show.cats');
     // 猫情報編集画面表示
-    Route::get('/cats/{id}/edit',[CatController::class, 'edit'])->name('edit.cats');
+    Route::get('/cats/{cat}/edit',[CatController::class, 'edit'])->name('edit.cats');
     // 猫情報編集処理
-    Route::post('/cats/{id}/edit',[CatController::class, 'update'])->name('update.cats');
+    Route::post('/cats/{cat}/edit',[CatController::class, 'update'])->name('update.cats');
     // 猫情報削除処理
-    Route::post('/cats/{id}/delete',[CatController::class, 'destroy'])->name('delete.cats');
-    // 猫情報一覧表示
-    Route::get('/cats',[CatController::class, 'index'])->name('index.cats');
+    Route::post('/cats/{cat}/delete',[CatController::class, 'destroy'])->name('delete.cats');
 
     // ログアウト処理
     Route::post('/logout',[AuthController::class, 'logout'])->name('admin.logout');

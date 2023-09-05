@@ -19,9 +19,8 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade')->nullable();
             $table->foreignId('gender_id')->constrained()->onDelete('cascade')->notNull();
             $table->foreignId('kind_id')->notNull();
-            $table->integer('age')->notNull();
             $table->date('birthday')->nullable();
-            $table->integer('weight')->notNull();
+            $table->decimal('weight', 5,2)->notNull();
             $table->string('introduction')->nullable();
             $table->integer('soracom')->unique()->nullable();
             $table->integer('hellolight')->unique()->nullable();
