@@ -173,4 +173,25 @@ class CatController extends Controller
         $uniqueString = Str::random(10);
         return $uniqueString;
     }
+
+    // ユーザーの操作
+    // 
+    public function userShow(Cat $cat)
+    {
+        // ここでは、猫の詳細画面を表示するために必要なデータを取得しています。
+        // まず猫の情報を取得しますが、これはaタグの引数で受け取った$catをそのまま使っています。
+        //そのためaタグが＄cat = Cat::find($cat->id); と同じ意味になり、ここでは不要です。
+
+        // admin,gender,kindの情報を事前に取得しておきます。
+        // これらの情報は、猫の情報を表示するために必要になるためです。
+        $cat->load('admin','gender','kind');
+
+        // ここでは、猫の年齢を計算しています。
+        $age = Carbon::parse($cat->birthday)->age;
+
+        // まず、ログインしている管理者の情報を取得しています。
+        $admin = Auth::guard('admin')->user();
+        
+        return view('cats.show', compact('admin','cat','age'));
+    }
 }

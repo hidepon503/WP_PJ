@@ -37,13 +37,15 @@
 </header>
 <!-- ▲▲▲▲共通ヘッダー▲▲▲▲　-->
 
-<!-- ▼▼▼▼ページ毎の個別内容▼▼▼▼　-->
 <main class="container flex px-4 mx-auto">
-    <div class="menu-container w-1/3 h-screen bg-red-200">
+    <!-- ▼▼▼▼メニュー▼▼▼▼　-->
+    <div class="menu-container w-1/3 h-auto bg-red-200">
         @include('user.user-menu')
     </div>
+
+    
+    <!-- ▼▼▼▼ページ毎の個別内容▼▼▼▼　-->
     <div class="content w-2/3 h-screen bg-blue-200">
-        <h1>@yield('title')</h1>
         @yield('content')
     </div>
 

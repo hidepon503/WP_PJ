@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('index');
@@ -16,9 +17,20 @@ Route::get('/index', function () {
 });
 
 //Userの breeze のログインまわりのルーティング
-Route::get('/dashboard', function () {
-    return view('user.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//ログイン処理後HomeControllerのindex処理をさせる
+//以下の記述は特定のルートに対して、ミドルウェアを適用する方法
+// Route::get('/home', [HomeController::class, 'index'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('home');
+
+// 下記のようにグループ化することで、グループ内のルートに対して、ミドルウェアを適用することができる
+Route::middleware(['auth', 'verified'])->group(function () {
+    // ログイン後のホーム画面
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    // 猫の詳細画面
+    Route::get('/cat/{cat}', [HomeController::class, 'show'])->name('cat.show');
+
+});
 
 
 // アカウント管理画面

@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\Cat;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -21,7 +22,8 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
-     * Handle an incoming authentication request.
+     * Store メソッドでログインができた後、RouteServiceProvider::HOMEで指定されている/homeのgetメソッドのルーティングに進む
+     * RouteServiceProvider::HOMEはproviderディレクトリのRouteServiceProviderないで設定されている
      */
     public function store(LoginRequest $request): RedirectResponse
     {
