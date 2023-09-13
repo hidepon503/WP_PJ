@@ -36,6 +36,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/search/result', [HomeController::class, 'searchResult'])->name('search.result');
     // 猫のお気に入り登録
     Route::post('/favorite/toggle/{catId}', [FavoriteController::class, 'toggleFavorite'])->name('favorite.toggle');
+    // 猫のお気に入り一覧
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
 });
 
 

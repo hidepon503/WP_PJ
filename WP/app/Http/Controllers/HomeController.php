@@ -91,26 +91,26 @@ class HomeController extends Controller
             }
         }
 
-        // 並べ替えのロジックを追加
-        $order = $request->input('order', 'created_at_desc'); // デフォルトは登録順の降順
-        
-        switch ($order) {
-            case 'age_asc':
-                $query->orderBy('birthday', 'asc'); // 年齢の昇順
-                break;
-            case 'age_desc':
-                $query->orderBy('birthday', 'desc'); // 年齢の降順
-                break;
-            case 'created_at_asc':
-                $query->orderBy('created_at', 'asc'); // 登録日の昇順
-                break;
-            default: // 'created_at_desc'
-                $query->orderBy('created_at', 'desc'); // 登録日の降順
-                break;
-        }
-    
-        // 結果を並べ替えてページングします。
-        $cats = $query->paginate(8);
+    // 並べ替えのロジックを追加
+    $order = $request->input('order', 'created_at_desc'); // デフォルトは登録順の降順
+
+    switch ($order) {
+        case 'age_asc':
+            $query->orderBy('birthday', 'asc'); // 年齢の昇順
+            break;
+        case 'age_desc':
+            $query->orderBy('birthday', 'desc'); // 年齢の降順
+            break;
+        case 'created_at_asc':
+            $query->orderBy('created_at', 'asc'); // 登録日の昇順
+            break;
+        default: // 'created_at_desc'
+            $query->orderBy('created_at', 'desc'); // 登録日の降順
+            break;
+    }
+
+    // 結果を並べ替えてページングします。
+    $cats = $query->paginate(8);
 
         // 以前と同様に、各猫の実際の年齢を計算します。
         foreach ($cats as $cat) {
