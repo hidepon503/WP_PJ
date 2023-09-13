@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FavoriteController;
 
 Route::get('/', function () {
     return view('index');
@@ -29,7 +30,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     // 猫の詳細画面
     Route::get('/cat/{cat}', [HomeController::class, 'show'])->name('cat.show');
-
+    // 猫の検索画面
+    Route::get('/search', [HomeController::class, 'search'])->name('search');
+    // 猫の検索結果画面
+    Route::get('/search/result', [HomeController::class, 'searchResult'])->name('search.result');
+    // 猫のお気に入り登録
+    Route::post('/favorite/toggle/{catId}', [FavoriteController::class, 'toggleFavorite'])->name('favorite.toggle');
 });
 
 

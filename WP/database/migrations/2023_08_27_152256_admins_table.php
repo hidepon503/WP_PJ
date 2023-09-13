@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique()->notnull()->comment('メールアドレス');
             $table->string('password')->notnull()->comment('パスワード');
             $table->string('tel')->notnull()->comment('電話番号');
-            $table->unsignedInteger('postcode')->nullable()->comment('郵便番号');
+            $table->unsignedInteger('postcode_id')->nullable()->comment('郵便番号');
             $table->string('address')->nullable()->comment('住所');
             $table->unsignedInteger('ceo_id')->nullable()->comment('代表者ID');
             $table->string('introduction')->nullable()->comment('紹介文');

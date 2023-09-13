@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 
 class Cat extends Model
@@ -25,6 +26,11 @@ class Cat extends Model
         'admin_id',
         'gender_id',
     ];
+
+    public function getAgeAttribute()
+    {
+        return Carbon::parse($this->birthday)->age;
+    }
 
     public function admin()
     {
@@ -49,6 +55,10 @@ class Cat extends Model
     public function cat_image()
     {
         return $this->hasMany('App\Models\CatImage');
+    }
+    public function favoritedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'favorites');
     }
 
 }

@@ -25,6 +25,11 @@ class UsersTableSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => Hash::make('11111111'),
                 'remember_token' => Str::random(10),
+                'tel' => '09012345678',
+                'postcode_id' => '1080',
+                'address' => '北海道札幌市中央区南6条西25丁目1-6',
+                'birthday' => '1990-01-01',
+                'introduction' => 'よろしくお願いします。',
             ],
             [
                 'name' => '佐藤 花子',
@@ -32,6 +37,11 @@ class UsersTableSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => Hash::make('secret123'),
                 'remember_token' => Str::random(10),
+                'tel' => '09012345678',
+                'postcode_id' => '1080',
+                'address' => '北海道札幌市中央区南6条西25丁目1-6',
+                'birthday' => '1990-01-01',
+                'introduction' => 'よろしくお願いします。',
             ],
             [
                 'name' => '鈴木 一郎',
@@ -39,6 +49,11 @@ class UsersTableSeeder extends Seeder
                 'email_verified_at' => now(),
                 'password' => Hash::make('password123'),
                 'remember_token' => Str::random(10),
+                'tel' => '09012345678',
+                'postcode_id' => '1080',
+                'address' => '北海道札幌市中央区南6条西25丁目1-6',
+                'birthday' => '1990-01-01',
+                'introduction' => 'よろしくお願いします。',
             ],
         ];
 

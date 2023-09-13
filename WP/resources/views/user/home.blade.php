@@ -9,6 +9,8 @@
 
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
     <script src="/js/main.js"></script>
+    @livewireStyles
+
 </head>
 <body class="antialiased bg-body text-body font-body">
 
@@ -78,6 +80,8 @@
     </div>
 </footer>
 <!-- ▲▲▲▲共通フッター▲▲▲▲　-->
+
+@livewireScripts
 </body>
 </html>
 

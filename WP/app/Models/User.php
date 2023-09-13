@@ -47,4 +47,15 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\Cat');
     }
+    
+    public function postcodes()
+    {
+        return $this->belongsTo('App\Models\Postcode');
+    }
+    
+    public function favoriteCats()
+    {
+        return $this->belongsToMany(Cat::class, 'favorites');
+    }
+
 }
