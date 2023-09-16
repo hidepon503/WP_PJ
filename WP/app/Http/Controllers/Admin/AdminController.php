@@ -80,4 +80,11 @@ class AdminController extends Controller
     {
         //
     }
+
+    // matchingsテーブルに保存されている、自分の猫宛のマッチング申請を取得して通知を表示する
+    public function dashboard()
+    {
+        $notifications = Matching::where('status', 'requested')->count();
+        return view('admin.dashboard', compact('notifications'));
+    }
 }

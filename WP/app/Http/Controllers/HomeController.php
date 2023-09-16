@@ -10,13 +10,15 @@ use App\Models\Kind;
 use App\Models\Postcode;
 use App\Models\Admin;
 use App\Models\User;
+use App\Models\Matching;
+use App\Models\UserCat;
 
 
 class HomeController extends Controller
 {
     public function index()
     {
-        // catsテーブルから登録された最新の猫の情報を１２匹分取得する
+        // catsテーブルから登録された最新の猫の情報を8匹分取得する
         $cats = Cat::orderBy('created_at', 'desc')->take(8)->get();
 
         // 2. 各Catインスタンスにリアルタイムの年齢を計算するメソッドを追加
@@ -24,8 +26,11 @@ class HomeController extends Controller
             $cat->age = $this->calculateAge($cat->birthday);
         }
 
+        // user_catsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードを取得する
+        $user_cats = UserCat::where('user_id', auth()->id())->get();
+
         // 取得した猫の情報をビューに渡す
-        return view('user.index', compact('cats'));
+        return view('user.index', compact('cats', 'user_cats'));
     }
 
     public function show(Cat $cat)

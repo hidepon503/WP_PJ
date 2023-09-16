@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\MatchingController;
 
 Route::get('/', function () {
     return view('index');
@@ -38,6 +39,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/favorite/toggle/{catId}', [FavoriteController::class, 'toggleFavorite'])->name('favorite.toggle');
     // 猫のお気に入り一覧
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+    // 猫のマッチング申請
+    Route::post('/cats/{cat}/match', [MatchingController::class, 'store'])->name('match.store');
+
 });
 
 

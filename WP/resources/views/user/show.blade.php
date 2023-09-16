@@ -3,18 +3,27 @@
 @section('content')
 <section>
      
-      <div class="mb-4 flex">
-          <!---->
-          <img class="h-64 w-64 rounded-full object-cover" src="{{ asset('storage/images/cats/' . $cat->image) }}" alt="{{ $cat->name }}">
-          <div class="pl-16 ">
+        <div class="mb-4 py-4 flex">
+            <div class="flex flex-col items-center px-6">
+                <img class="h-64 w-80 mb-6 object-cover" src="{{ asset('storage/images/cats/' . $cat->image) }}" alt="{{ $cat->name }}">
+                <form action="{{ route('match.store', $cat->id) }}" method="post">
+                    @csrf
+                    <button class="inline-block px-4 h-8 text-xs font-semibold leading-none bg-blue-500 hover:bg-blue-600 text-white rounded ml-3" type="submit">マッチング申請</button>
+                    
+                </form>
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </div>
+            
             {{-- CSSグリッドを利用した２カラムレイアウトで、猫の詳細を表示 --}}
             <div class="grid grid-cols-4 gap-x-16 gap-y-8 text-2xl">
                 <label for="cat-name" class="grid-item col-span-1 font-bold">名前</label>
                 <div id="cat-name" class="grid-item col-span-3">{{ $cat->name }}</div>
-
                 <label for="cat-admin-name" class="grid-item col-span-1 font-bold">登録団体名</label>
                 <div id="cat-admin-name" class="grid-item col-span-3">{{ $cat->admin->name }}</div>
-
                 <label for="cat-gender" class="grid-item col-span-1 font-bold">性別</label>
                 <div id="cat-gender" class="grid-item col-span-3">{{ $cat->gender->gender }}</div>
 
@@ -35,8 +44,7 @@
 
                 
             </div>
-          </div>
-      </div>
+        </div>
 </section>
 <section>
     

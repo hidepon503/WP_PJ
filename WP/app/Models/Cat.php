@@ -37,10 +37,13 @@ class Cat extends Model
         return $this->belongsTo('App\Models\Admin');
     }
 
-    public function user()
+    public function users()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsToMany(User::class, 'user_cats')
+                    ->withPivot(['started_at', 'ended_at', 'relationship_type'])
+                    ->withTimestamps();
     }
+
 
     public function gender()
     {

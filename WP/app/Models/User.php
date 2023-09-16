@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'cat_id',
+
     ];
 
     /**
@@ -45,10 +47,13 @@ class User extends Authenticatable
 
     public function cats()
     {
-        return $this->hasOne('App\Models\Cat');
+        return $this->belongsToMany(Cat::class, 'user_cats')
+                    ->withPivot(['started_at', 'ended_at', 'relationship_type'])
+                    ->withTimestamps();
     }
+
     
-    public function postcodes()
+    public function postcode()
     {
         return $this->belongsTo('App\Models\Postcode');
     }

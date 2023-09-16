@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Cat\CatController;
+use App\Http\Controllers\Admin\AdminMatchingController;
+use App\Http\Controllers\Admin\AdminUserCatController;
 
 // adminアカウント登録画面表示
 Route::get('/create',[AdminController::class, 'create'])->name('admin.create');
@@ -37,6 +39,19 @@ Route::middleware('auth:admin')->group(function(){
     Route::post('/cats/{cat}/edit',[CatController::class, 'update'])->name('update.cats');
     // 猫情報削除処理
     Route::post('/cats/{cat}/delete',[CatController::class, 'destroy'])->name('delete.cats');
+
+    // マッチング申請一覧表示
+    Route::get('/match',[AdminMatchingController::class, 'index'])->name('match.index');
+    // マッチング申請の受理
+    Route::post('/match/{matching}/approve', [AdminMatchingController::class, 'approve'])->name('match.approve');
+    // マッチング申請の拒否
+    Route::post('/match/{matching}/reject', [AdminMatchingController::class, 'reject'])->name('match.reject');
+
+    // 特定の猫の飼い主の一覧を取得
+    Route::get('/cats/{cat}/users', [AdminUserCatController::class, 'index'])->name('cats.users.index');
+    // 特定の猫と飼い主の詳細を取得
+    Route::get('/cats/{cat}/users/{user}', [AdminUserCatController::class, 'show'])->name('cats.users.show');
+
 
     // ログアウト処理
     Route::post('/logout',[AuthController::class, 'logout'])->name('admin.logout');
