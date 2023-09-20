@@ -31,7 +31,7 @@ class AdminMatchingController extends Controller
     public function approve($matchingId)
     {
         $matching = Matching::find($matchingId);
-        $matching->request_id = '2';
+        $matching->request_id = '1';
 
         $matching->save();
 
