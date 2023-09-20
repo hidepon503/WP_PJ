@@ -1,0 +1,244 @@
+<mxfile host="65bd71144e">
+    <diagram id="61r_hEm0DIJwqyWoz0NV" name="ページ1">
+        <mxGraphModel dx="2947" dy="3849" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="15" value="" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-450" y="-436" width="1110" height="720" as="geometry"/>
+                </mxCell>
+                <mxCell id="624" value="" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-360" y="-276" width="990" height="530" as="geometry"/>
+                </mxCell>
+                <mxCell id="873" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=-0.016;entryY=0.456;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="5" target="65" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="運営" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="-675" y="1520" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="65" value="" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-346.32000000000005" y="1320" width="340" height="510" as="geometry"/>
+                </mxCell>
+                <mxCell id="66" value="1：ログイン" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="1350" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="67" value="2.迷子ネコ検索&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%221%EF%BC%9A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%22%20style%3D%22shape%3Dext%3Bdouble%3D1%3Brounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22390%22%20y%3D%221280%22%20width%3D%22270%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="1410" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="3.迷子ねこ一覧取得(絞り込み可）" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="1470" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="69" value="４.飼い主情報閲覧" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="1530" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="574" value="動物愛護センター（行政）" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="-560" y="2044" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="575" value="" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-346.32000000000005" y="1944" width="340" height="280" as="geometry"/>
+                </mxCell>
+                <mxCell id="576" value="1：ログイン" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="1974" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="577" value="2.迷子ネコ検索&lt;span style=&quot;color: rgba(0, 0, 0, 0); font-family: monospace; font-size: 0px; text-align: start;&quot;&gt;%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20value%3D%221%EF%BC%9A%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%22%20style%3D%22shape%3Dext%3Bdouble%3D1%3Brounded%3D0%3BwhiteSpace%3Dwrap%3Bhtml%3D1%3B%22%20vertex%3D%221%22%20parent%3D%221%22%3E%3CmxGeometry%20x%3D%22390%22%20y%3D%221280%22%20width%3D%22270%22%20height%3D%2230%22%20as%3D%22geometry%22%2F%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E&lt;/span&gt;" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="2034" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="578" value="3.迷子ねこ一覧取得(絞り込み可）" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="2094" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="579" value="４.飼い主情報閲覧" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="2154" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="608" value="４.動物保護団体の登録承認" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="1590" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="611" value="４.動物保護団体一覧取得" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="1656" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="612" value="４.ユーザー一覧取得" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="1716" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="613" value="お問合せ内容確認" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-321.32000000000005" y="1766" width="270" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="58" style="edgeStyle=none;html=1;exitX=1;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.002;entryY=0.325;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="2" target="59" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="-500" y="597" as="targetPoint"/>
+                        <mxPoint x="-640" y="650" as="sourcePoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="シニア" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="-675" y="594" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="1：入会申請" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-380" y="-326" width="270" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="33" value="入会希望申請" style="edgeStyle=none;html=1;" parent="1" source="6" target="16" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="17" value="運営" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="42.5" y="-506" width="35" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="616" value="ログイン後" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="32.5" y="-241" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="617" value="" style="group" parent="1" vertex="1" connectable="0">
+                    <mxGeometry x="-740" y="-260" width="160" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="動物保護団体" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="617" vertex="1">
+                    <mxGeometry x="130" y="10" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" style="edgeStyle=none;html=1;entryX=0;entryY=0.3333333333333333;entryDx=0;entryDy=0;entryPerimeter=0;" parent="617" source="11" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="120" y="30" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="38" value="保護" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="14" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1045" y="-4" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="11" value="保護猫" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="617" vertex="1">
+                    <mxGeometry width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="618" value="1：審査" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-70" y="-326" width="260" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="619" value="アカウント発行" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="270" y="-326" width="270" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="621" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="618" target="619" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="10" y="-266" as="sourcePoint"/>
+                        <mxPoint x="60" y="-316" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="622" value="" style="endArrow=classic;html=1;" parent="1" source="17" target="618" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="10" y="-506" as="sourcePoint"/>
+                        <mxPoint x="60" y="-556" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="625" value="ログインフォーム" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-346.32" y="-183" width="190" height="29" as="geometry"/>
+                </mxCell>
+                <mxCell id="32" value="2：保護団体のプロフィール登録" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-40.91" y="-154" width="550.91" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="36" value="3：保護猫の登録（ペットパスポート）" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-40.91" y="-112" width="540.91" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="4：マッチング受理（要審査＆面談）" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="207.5009090909091" y="-73" width="220.90909090909093" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="49" value="5：SORACOMの連絡先登録" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="-31" width="200" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="6：シニアとスケジュール調整" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-40.91" y="11" width="550.91" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="61" value="7：シニアとのチャット" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-40.91" y="54" width="550.91" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="63" value="8：退会申請" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-40.91" y="97" width="550.91" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="609" value="8：お問合せ" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-310" y="144" width="830" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="627" value="マッチング後" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="324" y="-241" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-482.5" y="301" width="1130" height="963" as="geometry"/>
+                </mxCell>
+                <mxCell id="40" value="2：ユーザープロフィール作成" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-86.84" y="514" width="576.84" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="42" value="4：猫のお気に入り登録" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-80" y="672" width="233.67999999999998" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="43" value="5：保護団体とのチャット機能" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-80" y="720" width="560" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="6：動物保護団体とスケジュール調整" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-80" y="766" width="560" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="7：猫とのマッチング申請" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-80" y="826" width="233.67999999999998" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="50" value="9：更新時の往診希望依頼" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="237.5" y="826" width="233.67999999999998" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="10：支払い方法の登録・変更" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="77.5" y="874" width="402.5" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="55" value="11：迷子登録・解除" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="237.16000000000003" y="934" width="233.67999999999998" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="12：引取り申請" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="237.16000000000003" y="672" width="233.67999999999998" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="13：退会申請" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-80" y="1168" width="560" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="632" value="1：入会登録" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-390" y="384" width="233.67999999999998" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="633" value="２：ログイン" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-390" y="426" width="240" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="634" value="ログイン前" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="-320" y="-245" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="635" value="ログイン後" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="6.84" y="336" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="636" value="マッチング後" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="304" y="336" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="637" value="ログイン前" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="-340" y="332" width="100" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="638" value="４：保護猫一部表示" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-390" y="564" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="639" value="3：With Petsとは" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-390" y="474" width="880" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="640" value="５お知らせ" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-390" y="1004" width="880" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="643" value="13：お問合せ" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-391.84" y="1058" width="881.84" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="645" value="4：猫のプロフィール閲覧" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-80" y="620" width="233.67999999999998" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="646" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.391;entryY=-0.021;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="43" target="43" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="647" value="２：ログアウト" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-90" y="426" width="580" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="649" value="8：ペットパスポート&lt;br&gt;閲覧・追記" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="237.5" y="564" width="233.68" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="650" style="edgeStyle=none;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.774;entryY=0.633;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="36" target="36" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="652" value="ログアウト" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-45.91" y="-190" width="550.91" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="653" value="４：保護猫検索" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-80" y="564" width="250" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="1169" value="Text" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="1485" y="-955" width="50" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

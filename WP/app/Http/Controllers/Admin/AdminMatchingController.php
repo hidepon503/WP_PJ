@@ -6,9 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Matching;
 use App\Models\UserCat;
-use App\Models\Cat;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 
 
 class AdminMatchingController extends Controller
@@ -22,19 +21,8 @@ class AdminMatchingController extends Controller
             ->whereHas('cat', function ($query) use ($admin_id) {
                 $query->where('admin_id', $admin_id);
             })
+            ->where('request_id', 1)
             ->get();
-        // $matchings = DB::table('matchings')
-        //                 ->join('cats', 'matchings.cat_id', '=', 'cats.id')
-        //                 ->join('users', 'matchings.user_id', '=', 'users.id')  // usersテーブルとも結合
-        //                 ->where('cats.admin_id', '=', $admin_id)
-        //                 ->select(
-        //                     'matchings.*',
-        //                     'cats.name as cat_name', 
-        //                     'cats.image as cat_image_url',
-        //                     'users.name as user_name',  // usersテーブルからnameを選択
-        //                     'users.email as user_email' // usersテーブルからemailを選択
-        //                 )
-        //                 ->get();
 
         return view('admin.matchingIndex', ['matchings' => $matchings]);
     }
@@ -43,12 +31,14 @@ class AdminMatchingController extends Controller
     public function approve($matchingId)
     {
         $matching = Matching::find($matchingId);
-        $matching->status = 'approved';
+        $matching->request_id = '2';
+
         $matching->save();
 
         UserCat::create([
             'user_id' => $matching->user_id,
             'cat_id' => $matching->cat_id,
+            'relation_id' => $matching->request_id,
             'started_at' => now(),
         ]);
 

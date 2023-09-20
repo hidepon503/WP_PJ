@@ -17,7 +17,7 @@ class UserCat extends Model
         'cat_id',
         'started_at',
         'ended_at',
-        'relationship_type'
+        'relation_id'
     ];
 
     protected $casts = [
@@ -33,5 +33,10 @@ class UserCat extends Model
     public function cat()
     {
         return $this->belongsTo('App\Models\Cat');
+    }
+
+    public function relation()
+    {
+        return $this->belongsTo('App\Models\Relation');
     }
 }

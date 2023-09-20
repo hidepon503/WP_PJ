@@ -17,4 +17,8 @@ class Matching extends Model
         return $this->belongsTo(Cat::class);
     }
 
+    public function request() {
+        return $this->belongsTo(Request::class);
+    }
+
 }

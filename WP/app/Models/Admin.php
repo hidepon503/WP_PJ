@@ -53,9 +53,4 @@ class Admin extends Authenticatable
     {
         return $this->hasMany('App\Models\Cat');
     }
-
-    public function postcodes()
-    {
-        return $this->belongsTo('App\Models\Postcode');
-    }
 }

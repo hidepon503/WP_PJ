@@ -17,12 +17,16 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('image')->nullable()->comment('写真');
             $table->string('tel')->nullable()->comment('電話番号');
-            $table->unsignedInteger('postcode_id')->nullable()->comment('郵便番号');
-            $table->string('address')->nullable()->comment('住所');
+            $table->integer('postcode')->nullable()->comment('郵便番号');
+            $table->string('prefecture')->nullable()->comment('都道府県');
+            $table->string('city')->nullable()->comment('市区町村');
+            $table->string('town')->nullable()->comment('大字');
+            $table->string('street')->nullable()->comment('番地');
+            $table->string('building')->nullable()->comment('建物名・部屋番号');
             $table->date('birthday')->nullable()->comment('誕生日');
             $table->string('introduction')->nullable()->comment('紹介文');
-
             $table->rememberToken();
             $table->timestamps();
         });

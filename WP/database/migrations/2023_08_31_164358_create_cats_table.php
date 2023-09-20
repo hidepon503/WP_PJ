@@ -14,18 +14,19 @@ return new class extends Migration
         Schema::create('cats', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image')->notNull();
             $table->foreignId('admin_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade')->nullable();
-            $table->foreignId('gender_id')->constrained()->onDelete('cascade')->notNull();
-            $table->foreignId('kind_id')->notNull();
+            $table->string('image')->notNull();
             $table->date('birthday')->nullable();
             $table->decimal('weight', 5,2)->notNull();
+            $table->boolean('lostchild')->default(false);
+            $table->foreignId('gender_id')->constrained()->onDelete('cascade')->notNull();
+            $table->foreignId('kind_id')->notNull();
+            $table->foreignId('status_id')->notNull();
             $table->string('introduction')->nullable();
+            $table->string('insuranceCard')->nullable()->comment('保険証');
             $table->integer('soracom')->unique()->nullable();
             $table->integer('hellolight')->unique()->nullable();
             $table->integer('apple')->unique()->nullable();
-            $table->boolean('lostchild')->default(false);
             $table->timestamps();
         });
     }

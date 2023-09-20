@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('cat_id');
-            $table->enum('status', ['requested', 'approved', 'rejected']);
+            $table->foreignId('request_id')->notNull();
+            $table->string('reason')->nullable()->comment('理由');
             $table->timestamps();
 
             // 外部キー制約

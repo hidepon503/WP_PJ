@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('cat_id')->constrained()->onDelete('cascade');
+            $table->foreignId('relation_id')->notnull();
             $table->date('started_at')->comment('猫を飼い始めた日');
             $table->date('ended_at')->nullable()->comment('猫の飼育を終えた日');
-            $table->string('relationship_type')->nullable()->comment('猫との関係の種類');
             $table->timestamps();
         });
     }

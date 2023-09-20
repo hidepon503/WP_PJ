@@ -25,6 +25,9 @@ class Cat extends Model
         'introduction',
         'admin_id',
         'gender_id',
+        'status_id',
+        'insuranceCard',
+        ''
     ];
 
     public function getAgeAttribute()
@@ -44,7 +47,6 @@ class Cat extends Model
                     ->withTimestamps();
     }
 
-
     public function gender()
     {
         return $this->belongsTo('App\Models\Gender');
@@ -55,6 +57,16 @@ class Cat extends Model
         return $this->belongsTo('App\Models\Kind');
     }
 
+    public function status()
+    {
+        return $this->belongsTo('App\Models\Status');
+    }
+
+    public function treatmentHistory()
+    {
+        return $this->hasMany('App\Models\TreatmentHistory');
+    }
+
     public function cat_image()
     {
         return $this->hasMany('App\Models\CatImage');
@@ -63,5 +75,6 @@ class Cat extends Model
     {
         return $this->belongsToMany(User::class, 'favorites');
     }
+
 
 }

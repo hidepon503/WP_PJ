@@ -51,12 +51,6 @@ class User extends Authenticatable
                     ->withPivot(['started_at', 'ended_at', 'relationship_type'])
                     ->withTimestamps();
     }
-
-    
-    public function postcode()
-    {
-        return $this->belongsTo('App\Models\Postcode');
-    }
     
     public function favoriteCats()
     {

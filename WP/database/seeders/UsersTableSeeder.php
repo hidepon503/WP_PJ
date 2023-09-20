@@ -26,10 +26,14 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('11111111'),
                 'remember_token' => Str::random(10),
                 'tel' => '09012345678',
-                'postcode_id' => '1080',
-                'address' => '北海道札幌市中央区南6条西25丁目1-6',
+                'postcode' => '1111111',
+                'prefecture' => '北海道',
+                'city' => '札幌市中央区',
+                'town' => '南6条西',
+                'street' => '25丁目1-6',
+                'building' => 'ツキネコカフェ', 
                 'birthday' => '1990-01-01',
-                'introduction' => 'よろしくお願いします。',
+                'introduction' => 'よろしくお願いします。'
             ],
             [
                 'name' => '佐藤 花子',
@@ -38,10 +42,14 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('secret123'),
                 'remember_token' => Str::random(10),
                 'tel' => '09012345678',
-                'postcode_id' => '1080',
-                'address' => '北海道札幌市中央区南6条西25丁目1-6',
+                'postcode' => '1111111',
+                'prefecture' => '北海道',
+                'city' => '札幌市中央区',
+                'town' => '南6条西',
+                'street' => '25丁目1-6',
+                'building' => 'ツキネコカフェ', 
                 'birthday' => '1990-01-01',
-                'introduction' => 'よろしくお願いします。',
+                'introduction' => 'よろしくお願いします。'
             ],
             [
                 'name' => '鈴木 一郎',
@@ -50,10 +58,14 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password123'),
                 'remember_token' => Str::random(10),
                 'tel' => '09012345678',
-                'postcode_id' => '1080',
-                'address' => '北海道札幌市中央区南6条西25丁目1-6',
+                'postcode' => '1111111',
+                'prefecture' => '北海道',
+                'city' => '札幌市中央区',
+                'town' => '南6条西',
+                'street' => '25丁目1-6',
+                'building' => 'ツキネコカフェ', 
                 'birthday' => '1990-01-01',
-                'introduction' => 'よろしくお願いします。',
+                'introduction' => 'よろしくお願いします。'
             ],
         ];
 

@@ -21,8 +21,13 @@ class AdminsTableSeeder extends Seeder
             'email' => 'sample@gmail.com',
             'password' => Hash::make('11111111'),
             'tel' => '09012345678',
-            'postcode_id' => '1080',
-            'address' => '北海道札幌市中央区南6条西25丁目1-6',
+            'postcode' => '1111111',
+            'prefecture' => '北海道',
+            'city' => '札幌市中央区',
+            'town' => '南6条西',
+            'street' => '25丁目1-6',
+            'building' => 'ツキネコカフェ', 
+            
         ];
         Admin::create($param);
 
@@ -31,8 +36,13 @@ class AdminsTableSeeder extends Seeder
             'email' => 'sample2@gmail.com',
             'password' => Hash::make('22222222'),
             'tel' => '09012345678',
-            'postcode_id' => '5600',
-            'address' => '東京都千代田区千代田1-1',
+            'postcode' => '1111111',
+            'prefecture' => '北海道',
+            'city' => '札幌市中央区',
+            'town' => '南6条西',
+            'street' => '25丁目1-6',
+            'building' => 'ツキネコカフェ', 
+            
         ];
         Admin::create($param);
 
@@ -41,8 +51,13 @@ class AdminsTableSeeder extends Seeder
             'email' => 'sample3@gmail.com',
             'password' => Hash::make('33333333'),
             'tel' => '09012345678',
-            'postcode_id' => '38000',
-            'address' => '北海道札幌市中央区南6条西25丁目1-6',
+            'postcode' => '1111111',
+            'prefecture' => '北海道',
+            'city' => '札幌市中央区',
+            'town' => '南6条西',
+            'street' => '25丁目1-6',
+            'building' => 'ツキネコカフェ', 
+            
         ];
         Admin::create($param);
 
@@ -51,8 +66,13 @@ class AdminsTableSeeder extends Seeder
             'email' => 'sample4@gmail.com',
             'password' => Hash::make('44444444'),
             'tel' => '09012345678',
-            'postcode_id' => '60006',
-            'address' => '東京都千代田区千代田1-1',
+            'postcode' => '1111111',
+            'prefecture' => '北海道',
+            'city' => '札幌市中央区',
+            'town' => '南6条西',
+            'street' => '25丁目1-6',
+            'building' => 'ツキネコカフェ', 
+            
         ];
         Admin::create($param);
 
@@ -61,8 +81,13 @@ class AdminsTableSeeder extends Seeder
             'email' => 'sample5@gmail.com',
             'password' => Hash::make('55555555'),
             'tel' => '09012345678',
-            'postcode_id' => '3406',
-            'address' => '東京都千代田区千代田1-1',
+            'postcode' => '1111111',
+            'prefecture' => '北海道',
+            'city' => '札幌市中央区',
+            'town' => '南6条西',
+            'street' => '25丁目1-6',
+            'building' => 'ツキネコカフェ', 
+            
         ];
         Admin::create($param);
     }

@@ -4,25 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Matching;
 use Illuminate\Http\Request;
-use App\Http\Requests\MatchingRequest;
 use App\Models\Cat;
-use App\Models\User;
-use App\Models\Auth;
+use App\Models\Request as RequestModel;
 
 
 class MatchingController extends Controller
 {
     /**
-     * マッチングを申請し、matchingsテーブルにrequestedを保存する
+     * マッチングを申請し、matchingsテーブルにrequestsテーブルのId1を保存する
      */
     public function store(Request $request, $cat_id) 
     {   
 
+        // "requested"の回答のIDを取得
+        $requestedId = RequestModel::where('answer', 'マッチング受付')->first()->id;
+
         // ユーザーが現在のマッチング申請数を取得
-        $currentRequests = Matching::where('user_id', auth()->id())->where('status', 'requested')->count();
+        $currentRequests = Matching::where('user_id', auth()->id())->where('request_id', $requestedId)->count();
     
-        // 申請数が5件を超えているか、既にマッチングが受理されている場合はエラーメッセージを返す
-        if($currentRequests >= 5) {
+        // 申請数が1件を超えているか、既にマッチングが受理されている場合はエラーメッセージを返す
+        if($currentRequests >= 1) {
             return redirect()->back()->with('error', '申請上限に達しました。');
         }
     
@@ -34,27 +35,14 @@ class MatchingController extends Controller
         $cat = Cat::find($cat_id);
 
         $matching->cat_id = $cat->id;
-        $matching->status = 'requested';
+        // マッチング申請をデータベースに保存時にも、request_idをセット
+        $matching->request_id = $requestedId;
         $matching->save();
     
         return redirect()->back()->with('success', 'マッチング申請を送りました。');
     }
 
-    public function approve(Matching $matching) 
-    {
-        $matching->status = 'approved';
-        $matching->save();
 
-        return redirect()->back()->with('success', 'マッチングを受理しました。');
-    }
-
-    public function reject(Matching $matching) 
-    {
-        $matching->status = 'rejected';
-        $matching->save();
-        
-        return redirect()->back()->with('success', 'マッチングを拒否しました。');
-    }
     
     
     
