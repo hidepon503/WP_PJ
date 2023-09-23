@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Matching;
 use App\Models\UserCat;
-use App\MOdels\Cat;
+use App\Models\Cat;
 
 use Illuminate\Support\Facades\Auth;
 
