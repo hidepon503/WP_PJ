@@ -34,7 +34,10 @@ class HomeController extends Controller
         $user_cats = UserCat::where('user_id', auth()->id())->with('cat.admin')->get();
 
         // Matchingsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードを取得する
-        $matchings = Matching::where('user_id', auth()->id())->with('cat.admin')->get();
+        $matchings = Matching::where('user_id', auth()->id())
+                            ->where('request_id', 2)
+                            ->with('cat.admin')
+                            ->get();
 
 
         // 取得した猫の情報をビューに渡す

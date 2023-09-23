@@ -27,7 +27,7 @@
 </style>
 @section('content')
 
-@if(!$user_cats->isEmpty())  {{-- $matchingsにデータが存在する場合 --}}
+@if(!$matchings->isEmpty())  {{-- $matchingsにデータが存在する場合 --}}
 <section class="section1">
     @foreach($matchings as $matching)
     <a href="{{ route('matching.show', ['cat' => $matching->cat->id, 'user' => auth() -> id()]) }}">
