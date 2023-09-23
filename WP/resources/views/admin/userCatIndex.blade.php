@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title', 'マッチング管理') 
+@section('title', '契約一覧') 
 
 @section('content')
-<h1>マッチング管理</h1>
+<h1>契約一覧</h1>
 <section>
   <!-- Table Section -->
 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -16,7 +16,7 @@
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
             <div>
               <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                マッチング申請一覧
+                契約一覧
               </h2>
               <p class="text-sm text-gray-600 dark:text-gray-400">
                 
@@ -103,21 +103,21 @@
 
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
               {{-- ＠foreachを活用してmatchingsテーブルに登録のあった、レコードを一覧表示させる。catsテーブルにはAdmin_idが外部キー接続しており、Auth checkして操作するadminとid情報を持つレコードのみ表示させたい --}}
-@foreach ($matchings as $matching)
+@foreach ($userCats as $userCat)
     <tr>
         <td class="pl-6 py-3 text-left whitespace-nowrap">
-            <label for="checkbox-{{ $matching->id }}" class="flex">
-                <input type="checkbox" class="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="checkbox-{{ $matching->id }}">
-                <span class="sr-only">Checkbox for {{ $matching->user->name }}</span>
+            <label for="checkbox-{{ $userCat->id }}" class="flex">
+                <input type="checkbox" class="shrink-0 border-gray-200 rounded text-blue-600 pointer-events-none focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" id="checkbox-{{ $userCat->id }}">
+                <span class="sr-only">Checkbox for {{ $userCat->user->name }}</span>
             </label>
         </td>
 
         <td class="h-px w-px whitespace-nowrap">
             <div class="pl-6 lg:pl-3 xl:pl-0 pr-6 py-3">
                 <div class="flex items-center gap-x-3">
-                    <img class="inline-block w-32 rounded-full" src="{{  asset('storage/images/cats/' .$matching->cat->image )}}" alt="{{ $matching->cat->name }}">
+                    <img class="inline-block w-32 rounded-full" src="{{  asset('storage/images/cats/' .$userCat->cat->image )}}" alt="{{ $userCat->cat->name }}">
                     <div class="grow">
-                        <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $matching->cat->name }}</span>
+                        <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $userCat->cat->name }}</span>
                         <span class="block text-sm text-gray-500">
                           {{-- 後日猫の詳細ページに飛ぶボタンを設置したい --}}
                         </span>
@@ -128,39 +128,39 @@
 
         <td class="h-px w-72 whitespace-nowrap">
           <div class="flex items-center gap-x-3">
-            <img class="inline-block w-32 rounded-full" src="{{ asset('storage/images/users/' . $matching->user->image) }}" alt="{{ $matching->user->name }}">
+            <img class="inline-block w-32 rounded-full" src="{{ asset('storage/images/users/' . $userCat->user->image) }}" alt="{{ $userCat->user->name }}">
             <div class="px-6 py-3">
-              <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $matching->user->name }}</span>
-              <span class="block text-sm text-gray-500">{{ $matching->user->email }}</span>
+              <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $userCat->user->name }}</span>
+              <span class="block text-sm text-gray-500">{{ $userCat->user->email }}</span>
             </div>
           </div>
         </td>
 
         <td class="h-px w-px whitespace-nowrap">
             <div class="px-6 py-3">
-                <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $matching->request->answer }}</span>
+                <span class="block text-sm font-semibold text-gray-800 dark:text-gray-200">{{ $userCat->relation->name }}</span>
             </div>
         </td>
 
         <td class="h-px w-px whitespace-nowrap">
             <div class="px-6 py-3">
-                <span class="text-sm text-gray-500">{{ $matching->created_at->format('Y m d, H:i') }}</span>
+                <span class="text-sm text-gray-500">{{ $userCat->created_at->format('Y m d, H:i') }}</span>
             </div>
         </td>
 
-        <td class="h-px w-px whitespace-nowrap">
-          <form action="{{ route('match.approve', $matching->id) }}" method="post">
+        {{-- <td class="h-px w-px whitespace-nowrap">
+          <form action="{{ route('match.approve', $userCat->id) }}" method="post">
               @csrf
               <button class="inline-block px-4 h-8 text-xs font-semibold leading-none bg-blue-500 hover:bg-blue-600 text-white rounded ml-3" type="submit">受理</button>
           </form>
         </td>
 
         <td class="h-px w-px whitespace-nowrap">
-          <form action="{{ route('match.reject', $matching->id) }}" method="post">
+          <form action="{{ route('match.reject', $userCat->id) }}" method="post">
               @csrf
               <button class="inline-block px-4 h-8 text-xs font-semibold leading-none bg-red-500 hover:bg-red-600 text-white rounded ml-3" type="submit">拒否</button>
           </form>
-        </td>
+        </td> --}}
     </tr>
 @endforeach
               

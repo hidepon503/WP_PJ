@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Matching;
 use App\Models\UserCat;
+use App\MOdels\Cat;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -17,7 +19,7 @@ class AdminMatchingController extends Controller
     {
         $admin_id = Auth::id(); // 現在のadminのIDを取得
 
-        $matchings = Matching::with(['cat', 'user'])
+        $matchings = Matching::with(['cat', 'user', 'request'])
             ->whereHas('cat', function ($query) use ($admin_id) {
                 $query->where('admin_id', $admin_id);
             })
@@ -27,22 +29,34 @@ class AdminMatchingController extends Controller
         return view('admin.matchingIndex', ['matchings' => $matchings]);
     }
 
+    // マッチング申請の詳細を表示する
+    public function show($matchingId)
+    {
+        $matching = Matching::with(['cat', 'user', 'request'])->find($matchingId);
+
+        return view('admin.matchingShow', ['matching' => $matching]);
+    }
+
     // マッチング申請を受理し、user_catsテーブルにデータを保存する
     public function approve($matchingId)
     {
+        // matchingテーブルのrequest_idを2に更新
+        Matching::where('id', $matchingId)->update(['request_id' => '2']);
+        
+        // 対応するマッチング情報を取得
         $matching = Matching::find($matchingId);
-        $matching->request_id = '1';
 
-        $matching->save();
+        // cat_idと一致するcatsテーブルのidのレコードのstatusカラムを1に変更する
+        $cat = Cat::where('id', $matching->cat_id)->update(['status_id' => '3']);
 
         UserCat::create([
             'user_id' => $matching->user_id,
             'cat_id' => $matching->cat_id,
-            'relation_id' => $matching->request_id,
+            'relation_id' => $matching->request_id = '1',
             'started_at' => now(),
         ]);
 
-        return redirect()->back()->with('message', 'Matching approved!');
+        return redirect()->back()->with('message', 'マッチング申請を受理しました。');
     }
 
     // マッチング申請を拒否する
@@ -54,5 +68,54 @@ class AdminMatchingController extends Controller
         $matching->save();
 
         return redirect()->back()->with('message', 'Matching rejected.');
+    }
+
+    public function rejectIndex()
+    {
+        $admin_id = Auth::id(); // 現在のadminのIDを取得
+
+        $matchings = Matching::with(['cat', 'user', 'request'])
+            ->whereHas('cat', function ($query) use ($admin_id) {
+                $query->where('admin_id', $admin_id);
+            })
+            ->where('request_id', 3)
+            ->get();
+
+        return view('admin.rejectIndex', ['matchings' => $matchings]);
+    }
+
+    // cat_id内のadmin_idの情報がログインしているidと一致する猫のマッチング一覧を表示する
+    public function return()
+    {
+        $admin_id = Auth::id(); // 現在のadminのIDを取得
+
+        $matchings = Matching::with(['cat', 'user', 'request'])
+            ->whereHas('cat', function ($query) use ($admin_id) {
+                $query->where('admin_id', $admin_id);
+            })
+            ->where('request_id', 4)
+            ->get();
+
+        return view('admin.return', ['matchings' => $matchings]);
+    }
+
+    public function returnApprove($matchingId)
+    {
+        $matching = Matching::find($matchingId);
+        $matching->request_id = '5';
+        $matching->save();
+
+        // cat_idと一致するcatsテーブルのidのレコードのstatusカラムを1に変更する
+        $cat = Cat::where('id', $matching->cat_id)->update(['status_id' => '1']);
+
+        // user_id と cat_id が一致するレコードの更新を行う
+        UserCat::where('user_id', $matching->user_id)
+                ->where('cat_id', $matching->cat_id)
+                ->update([
+                    'relation_id' => '5',
+                    'ended_at' => now()
+                ]);
+
+        return redirect()->back()->with('message', '引取り申請を受理しました。');
     }
 }

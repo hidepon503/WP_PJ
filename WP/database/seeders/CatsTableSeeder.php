@@ -15,7 +15,7 @@ class CatsTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create('ja_JP');  // 日本語のFakerインスタンスを作成
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             Cat::create([
                 'name' => $faker->name,
                 'admin_id' => $faker->numberBetween(1, 5),  // 仮にadmin_idを1-5の間でランダムに割り当てる
@@ -25,7 +25,7 @@ class CatsTableSeeder extends Seeder
                 'lostchild' => $faker->boolean,  // trueかfalseをランダムに生成
                 'gender_id' => $faker->numberBetween(1, 2),  // 仮にgender_idを1-3の間でランダムに割り当てる
                 'kind_id' => $faker->numberBetween(1, 50),   // 仮にkind_idを1-10の間でランダムに割り当てる
-                'status_id' => $faker->numberBetween(1, 4),  // 仮にstatus_idを1-3の間でランダムに割り当てる
+                'status_id' => $faker->numberBetween(1, 2),  // 仮にstatus_idを2-2の間でランダムに割り当てる
                 'introduction' => $faker->sentence,
                 'insuranceCard' => null,
                 'soracom' => null,

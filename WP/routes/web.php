@@ -39,8 +39,27 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/favorite/toggle/{catId}', [FavoriteController::class, 'toggleFavorite'])->name('favorite.toggle');
     // 猫のお気に入り一覧
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+    
     // 猫のマッチング申請
     Route::post('/cats/{cat}/match', [MatchingController::class, 'store'])->name('match.store');
+    // 猫のマッチング申請キャンセル
+    Route::delete('/cats/{cat}/match', [MatchingController::class, 'destroy'])->name('match.destroy');
+    // マッチングした猫の詳細表示
+    Route::get('/matching/{cat}/{user}', [MatchingController::class, 'show'])->name('matching.show');
+    // マッチングした猫の各種申請ページ表示
+    Route::get('/matching/{cat}/{user}/application',[MatchingController::class, 'application'])->name('application');
+    // マッチングした猫の引取り申請確認ページの表示
+    Route::get('/matching/{cat}/{user}/application/comeback',[MatchingController::class, 'comeback'])->name('matching.comeback');
+    //引取り申請送信
+    Route::post('/matching/{cat}/{user}/application/comeback',[MatchingController::class, 'comebackRequest'])->name('comeback.request');
+
+
+
+    // マッチングした猫とのチャット画面表示
+    
+    // マッチングした猫との診察履歴ページ表示
+
+
 
 });
 

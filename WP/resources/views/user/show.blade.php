@@ -9,16 +9,15 @@
                 <form action="{{ route('match.store', $cat->id) }}" method="post">
                     @csrf
                     <button class="inline-block px-4 h-8 text-xs font-semibold leading-none bg-blue-500 hover:bg-blue-600 text-white rounded ml-3" type="submit">マッチング申請</button>
-                    
                 </form>
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
+                {{-- Alert表示をインポートする --}}
+                <div class="my-6">
+                    @include('user.alert')
+                </div>
             </div>
             
             {{-- CSSグリッドを利用した２カラムレイアウトで、猫の詳細を表示 --}}
+            
             <div class="grid grid-cols-4 gap-x-16 gap-y-8 text-2xl">
                 <label for="cat-name" class="grid-item col-span-1 font-bold">名前</label>
                 <div id="cat-name" class="grid-item col-span-3">{{ $cat->name }}</div>
@@ -38,6 +37,11 @@
 
                 <label for="cat-weight" class="grid-item col-span-1 font-bold">体重</label>
                 <div id="cat-weight" class="grid-item col-span-3">{{ $cat->weight }}kg</div>
+
+                <label for="status" class=" col-span-1 font-bold">公開設定</label>
+                <div id="status" class=" col-span-3">{{ $cat->weight }}kg</div>
+
+                
 
                 <label for="cat-introduction" class="grid-item col-span-1 font-bold">紹介文</label>
                 <div id="cat-introduction" class="grid-item col-span-3">{{ $cat->introduction }}</div>

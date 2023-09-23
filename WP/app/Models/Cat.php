@@ -67,6 +67,11 @@ class Cat extends Model
         return $this->hasMany('App\Models\TreatmentHistory');
     }
 
+    public function matching()
+    {
+        return $this->hasMany('App\Models\Matching');
+    }
+
     public function cat_image()
     {
         return $this->hasMany('App\Models\CatImage');
@@ -75,6 +80,8 @@ class Cat extends Model
     {
         return $this->belongsToMany(User::class, 'favorites');
     }
+
+
 
 
 }

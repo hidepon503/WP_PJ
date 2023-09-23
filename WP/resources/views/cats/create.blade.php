@@ -85,8 +85,19 @@
                         <div class="flex">
                             <input id="birthday" class=" px-4 py-3 text-sm bg-white border rounded" type="date" name="birthday" value="{{ old('birthday') }}">
                         </div>
+                        {{-- statusテーブルで公開設定 --}}
+                        <label class="block text-sm font-medium ml-10 mr-2" for="birthday">公開設定</label>
+                        <div class="flex">
+                            <select id="status" class="appearance-none block pl-4 pr-8 py-3 mb-2 text-sm bg-white border rounded" name="status_id">
+                                @foreach($statuses as $status)
+                                    @if($status->id <= 2)
+                                        <option value="{{ $status->id }}">{{ $status->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
-                        
+
                     {{-- 紹介文 --}}
                     <div class="mb-6">
                         <label class="block text-sm font-medium mb-2" for="introduction">紹介文</label>

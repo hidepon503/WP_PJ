@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 
-@section('title', 'マッチング管理') 
+@section('title', 'マッチング拒否一覧') 
 
 @section('content')
-<h1>マッチング管理</h1>
+
 <section>
   <!-- Table Section -->
 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
@@ -16,7 +16,7 @@
           <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200 dark:border-gray-700">
             <div>
               <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
-                マッチング申請一覧
+                マッチング拒否一覧
               </h2>
               <p class="text-sm text-gray-600 dark:text-gray-400">
                 

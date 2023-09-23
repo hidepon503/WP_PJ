@@ -1,33 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\UserCat;
-use Illuminate\Http\Request;
-use App\Models\Cat;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminUserCatController extends Controller
 {
-    /**
-     * 特定の猫の飼い主一覧を表示する
-    **/
-    public function index($catId)  // $catIdをパラメータとして受け取る
+    // 現在のadminのIDを取得
+    public function contractIndex()
     {
-        // $catIdを元に、Catモデルからデータを取得する
-        $cat = Cat::with('users')->find($catId);
+        $admin_id = Auth::id(); 
 
-        if (!$cat) {
-            // 猫のデータが存在しない場合の処理
-            return redirect()->back()->with('error', 'Cat not found');
-        }
+        $userCats = UserCat::with(['cat', 'user', 'relation'])
+            ->whereHas('cat', function($query) use ($admin_id){
+                $query->where('admin_id', $admin_id);
+            })
+            ->get();
 
-        return view('usercat.index', ['cat' => $cat]);
-
-        // Viewの中で以下のように書く
-        // @foreach($cat->users as $user)
-        // {{ $user->name }} - {{ $user->pivot->started_at }} - {{ $user->pivot->ended_at }} - {{ $user->pivot->relationship_type }}
-        // @endforeach
+        return view('admin.userCatIndex', ['userCats' => $userCats]);
     }
+
+
         
 
     /**

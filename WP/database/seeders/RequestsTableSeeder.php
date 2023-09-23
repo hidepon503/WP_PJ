@@ -14,31 +14,31 @@ class RequestsTableSeeder extends Seeder
     public function run(): void
     {
         $param = [
-            'answer' => 'マッチング受付',
+            'answer' => 'マッチング申請中',
         ];
         Request::create($param);
         $param = [
-            'answer' => 'マッチング受理'
+            'answer' => '契約中'
         ];
         Request::create($param);
         $param = [
-            'answer' => 'マッチング拒否'
+            'answer' => '拒否'
         ];
         Request::create($param);
         $param = [
-            'answer' => '返却申請'
+            'answer' => '返却申請中'
         ];
         Request::create($param);
         $param = [
-            'answer' => '返却受理'
+            'answer' => '返却済'
         ];
         Request::create($param);
         $param = [
-            'answer' => '看取り申請'
+            'answer' => '看取り報告'
         ];
         Request::create($param);
         $param = [
-            'answer' => '看取り受理'
+            'answer' => '看取り完了'
         ];
         Request::create($param);
     }

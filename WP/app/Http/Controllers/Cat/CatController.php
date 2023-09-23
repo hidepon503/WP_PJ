@@ -6,6 +6,7 @@ use App\Models\Cat;
 use App\Models\Admin;
 use App\Models\Gender;
 use App\Models\Kind;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use App\Http\Requests\CatRequest;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +49,8 @@ class CatController extends Controller
         $admin = Auth::guard('admin')->user();
         $genders = Gender::all();
         $kinds = Kind::all();
-        return view('cats.create', compact('admin','genders','kinds'));
+        $statuses = Status::all();
+        return view('cats.create', compact('admin','genders','kinds', 'statuses'));
     }
 
     /**

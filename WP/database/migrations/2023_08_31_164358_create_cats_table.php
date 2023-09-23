@@ -21,7 +21,8 @@ return new class extends Migration
             $table->boolean('lostchild')->default(false);
             $table->foreignId('gender_id')->constrained()->onDelete('cascade')->notNull();
             $table->foreignId('kind_id')->notNull();
-            $table->foreignId('status_id')->notNull();
+            //デフォルトバリューを設定する
+            $table->foreignId('status_id')->notNull()->default(1);
             $table->string('introduction')->nullable();
             $table->string('insuranceCard')->nullable()->comment('保険証');
             $table->integer('soracom')->unique()->nullable();

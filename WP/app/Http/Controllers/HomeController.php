@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         // catsテーブルから登録された最新の猫の情報を8匹分取得する
-        $cats = Cat::orderBy('created_at', 'desc')->take(8)->get();
+        $cats = Cat::with('admin')->orderBy('created_at', 'desc')->take(8)->get();
 
         // 2. 各Catインスタンスにリアルタイムの年齢を計算するメソッドを追加
         foreach ($cats as $cat) {
@@ -27,10 +27,14 @@ class HomeController extends Controller
         }
 
         // user_catsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードを取得する
-        $user_cats = UserCat::where('user_id', auth()->id())->get();
+        $user_cats = UserCat::where('user_id', auth()->id())->with('cat.admin')->get();
+
+        // Matchingsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードを取得する
+        $matchings = Matching::where('user_id', auth()->id())->with('cat.admin')->get();
+
 
         // 取得した猫の情報をビューに渡す
-        return view('user.index', compact('cats', 'user_cats'));
+        return view('user.index', compact('cats', 'user_cats', 'matchings'));
     }
 
     public function show(Cat $cat)
