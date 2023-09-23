@@ -16,6 +16,19 @@ class MatchingController extends Controller
      */
     public function store(Request $request, $cat_id) 
     {   
+        $cat = Cat::find($cat_id);
+
+        if (!$cat || $cat->status_id !== 2) {
+            return redirect()->back()->with('error', 'この猫は現在マッチング申請を受け付けていません。');
+        }
+
+        // ユーザーがすでにこの猫に対してマッチング申請をしているかチェック
+        $existingMatching = Matching::where('user_id', auth()->id())->where('cat_id', $cat_id)->first();
+
+        if ($existingMatching) {
+            return redirect()->back()->with('error', '既にこの猫に対してマッチング申請をしています。');
+        }
+
         // "requested"の回答のIDを取得
         $requestedId = RequestModel::where('answer', 'マッチング申請中')->first()->id;
 

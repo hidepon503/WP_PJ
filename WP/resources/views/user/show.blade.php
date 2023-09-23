@@ -5,12 +5,30 @@
      
         <div class="mb-4 py-4 flex">
             <div class="flex flex-col items-center px-6">
+                <!-- 猫の画像を表示 -->
                 <img class="h-64 w-80 mb-6 object-cover" src="{{ asset('storage/images/cats/' . $cat->image) }}" alt="{{ $cat->name }}">
-                <form action="{{ route('match.store', $cat->id) }}" method="post">
-                    @csrf
-                    <button class="inline-block px-4 h-8 text-xs font-semibold leading-none bg-blue-500 hover:bg-blue-600 text-white rounded ml-3" type="submit">マッチング申請</button>
-                </form>
-                {{-- Alert表示をインポートする --}}
+            
+                <!-- 現在ログインしているユーザーがこの猫に対してすでにマッチング申請をしたかどうかを確認するためのロジック -->
+                @php
+                    $existingMatching = \App\Models\Matching::where('user_id', auth()->id())->where('cat_id', $cat->id)->first();
+                @endphp
+            
+                <!-- ここからが修正箇所 -->
+                @if($cat->status_id == 2)
+                    @if (!$existingMatching)
+                    <form action="{{ route('match.store', $cat->id) }}" method="post">
+                        @csrf
+                        <button class="inline-block px-4 h-8 text-xs font-semibold leading-none bg-blue-500 hover:bg-blue-600 text-white rounded ml-3" type="submit">マッチング申請</button>
+                    </form>
+                    @else
+                    <p>マッチング申請済</p>
+                    @endif
+                @else
+                    <p>交渉中</p>
+                @endif
+                <!-- 修正箇所終わり -->
+                
+                <!-- アラートの表示部分。成功やエラーメッセージなど、ユーザーに対してのフィードバックを表示するための部分 -->
                 <div class="my-6">
                     @include('user.alert')
                 </div>

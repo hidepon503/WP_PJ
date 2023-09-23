@@ -1,5 +1,30 @@
 @extends('user.home')
 @section('title', 'HOME')
+<style>
+/* 追加 */
+
+
+.blue-corner {
+    position: relative;
+}
+
+.blue-corner::before {
+    font-size: 12px;
+    content: "交渉中";
+    color: white;
+    padding: 4px 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: blue;
+    z-index: 1;
+}
+
+.family-decided-text {
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+</style>
 @section('content')
 
 @if(!$user_cats->isEmpty())  {{-- $matchingsにデータが存在する場合 --}}
@@ -37,7 +62,7 @@
             @foreach($cats as $cat)
                 <div class="catcontainer w-full md:w-1/4 py-5 md:px-5">
                     <a href="{{ route('cat.show', $cat->id) }}" class="">
-                        <div class=" px-2 bg-white shadow rounded h-56 py-6">
+                        <div class=" px-2 bg-white shadow rounded h-56 py-6 {{ $cat->status_id == 4 ? 'blue-corner' : '' }}">
                             <div class="flex flex-col justify-center items-center  mb-4">
                                 <!-- 仮定として、CatImageモデルと関連付けがされており、最初の画像を取得できるとします -->
                                 <img class="h-24 w-24 mb-2 rounded-full object-cover" src="{{ asset('storage/images/cats/' . $cat->image) }}" alt="{{ $cat->name }}">

@@ -1,5 +1,32 @@
 @extends('user.home')
 @section('title', 'search')
+
+<style>
+/* 追加 */
+
+
+.blue-corner {
+    position: relative;
+}
+
+.blue-corner::before {
+    font-size: 12px;
+    content: "交渉中";
+    color: white;
+    padding: 4px 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: blue;
+    z-index: 1;
+}
+
+.family-decided-text {
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+</style>
+
 @section('content')
 
 
@@ -63,35 +90,30 @@
             </div>
         </form>
 
-
-
-
-
-
-
         <div class="flex flex-wrap">
             @foreach($cats as $cat)
                 <div class="catcontainer w-full md:w-1/4 py-5 md:px-5">
-                    <div class=" px-2 bg-white shadow rounded h-56 py-6">
-                        <div class="flex flex-col justify-center items-center  mb-4">
-                            <!-- 仮定として、CatImageモデルと関連付けがされており、最初の画像を取得できるとします -->
+                    <!-- status_idに基づいてクラスを動的に追加 -->
+                    <div class="px-2 bg-white shadow rounded h-56 py-6 {{ $cat->status_id == 4 ? 'blue-corner' : '' }}">
+
+                        <div class="flex flex-col justify-center items-center mb-4">
+                            <!-- 画像、名前、性別、種類、お気に入りボタンなどの表示部分はそのまま保持 -->
                             <a href="{{ route('cat.show', $cat->id) }}" class="">
                                 <img class="h-24 w-24 mb-2 rounded-full object-cover" src="{{ asset('storage/images/cats/' . $cat->image) }}" alt="{{ $cat->name }}">
                             </a>
-                                <div class="">
-                                    <p class="text-l text-center">{{ $cat->name }}</p>
-                                    <!-- 仮定として、genderとkindの関係も設定されているとします -->
-                                    <p class="text-blueGray-400 text-center text-xs">{{ $cat->kind->kind }}</p>
-                                    <p class="text-xs text-center text-blueGray-400">{{ $cat->age }}歳  ({{ $cat->gender->gender }})</p>
-                                    <!-- お気に入りボタン -->
-                                    @livewire('favorite-component', ['catId' => $cat->id])
-                                </div>
+                            <div class="">
+                                <p class="text-l text-center">{{ $cat->name }}</p>
+                                <p class="text-blueGray-400 text-center text-xs">{{ $cat->kind->kind }}</p>
+                                <p class="text-xs text-center text-blueGray-400">{{ $cat->age }}歳  ({{ $cat->gender->gender }})</p>
+                                @livewire('favorite-component', ['catId' => $cat->id])
                             </div>
-                            <p class="leading-loose text-blueGray-400 mb-5 whitespace-pre-line">
-                                <!-- 何かのテキスト情報を表示したい場合、以下のようにすることができます -->
-                                {{ $cat->description }} 
-                            </p>
                         </div>
+                        <p class="leading-loose text-blueGray-400 mb-5 whitespace-pre-line">
+                            {{ $cat->description }}
+                        </p>
+                        <!-- status_idが3か4のときに"家族決定"のテキストを表示 -->
+
+                    </div>
                 </div>
             @endforeach
             {{ $cats->appends(['gender_id' => old('gender_id'), 'kind_id' => old('kind_id'), 'min_age' => old('min_age'), 'max_age' => old('max_age'), 'order' => old('order')])->links() }}

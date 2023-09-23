@@ -25,7 +25,7 @@ class CatsTableSeeder extends Seeder
                 'lostchild' => $faker->boolean,  // trueかfalseをランダムに生成
                 'gender_id' => $faker->numberBetween(1, 2),  // 仮にgender_idを1-3の間でランダムに割り当てる
                 'kind_id' => $faker->numberBetween(1, 50),   // 仮にkind_idを1-10の間でランダムに割り当てる
-                'status_id' => $faker->numberBetween(1, 2),  // 仮にstatus_idを2-2の間でランダムに割り当てる
+                'status_id' => $faker->numberBetween(2, 4),  // 仮にstatus_idを2-2の間でランダムに割り当てる
                 'introduction' => $faker->sentence,
                 'insuranceCard' => null,
                 'soracom' => null,
