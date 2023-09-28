@@ -31,6 +31,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     // 猫の詳細画面
     Route::get('/cat/{cat}', [HomeController::class, 'show'])->name('cat.show');
+    // 猫の詳細画面のチャットページの表示
+    Route::get('/cat/{cat}/chat', [HomeController::class, 'showChat'])->name('cat.chat');
+    // 猫の詳細画面の登録団体紹介ページの表示
+    Route::get('/cat/{cat}/admin', [HomeController::class, 'showAdmin'])->name('cat.admin');
     // 猫の検索画面
     Route::get('/search', [HomeController::class, 'search'])->name('search');
     // 猫の検索結果画面
@@ -42,18 +46,34 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     // 猫のマッチング申請
     Route::post('/cats/{cat}/match', [MatchingController::class, 'store'])->name('match.store');
+//未実装ここから
     // 猫のマッチング申請キャンセル
     Route::delete('/cats/{cat}/match', [MatchingController::class, 'destroy'])->name('match.destroy');
+// 未実装ここまで
+
     // マッチングした猫の詳細表示
     Route::get('/matching/{cat}/{user}', [MatchingController::class, 'show'])->name('matching.show');
     // マッチングした猫の各種申請ページ表示
     Route::get('/matching/{cat}/{user}/application',[MatchingController::class, 'application'])->name('application');
+
     // マッチングした猫の引取り申請確認ページの表示
     Route::get('/matching/{cat}/{user}/application/comeback',[MatchingController::class, 'comeback'])->name('matching.comeback');
     //引取り申請送信
     Route::post('/matching/{cat}/{user}/application/comeback',[MatchingController::class, 'comebackRequest'])->name('comeback.request');
 
+    // 猫の迷子申請確認ページの表示
+    Route::get('/matching/{cat}/{user}/application/lostchild',[MatchingController::class, 'lostchild'])->name('matching.lostchild');
+    //迷子申請送信
+    Route::post('/matching/{cat}/{user}/application/lostchild',[MatchingController::class, 'lostchildRequest'])->name('lostchild.request');
+    // 猫の発見報告確認ページの表示
+    Route::get('/matching/{cat}/{user}/application/found',[MatchingController::class, 'found'])->name('matching.found');
+    //発見報告送信
+    Route::post('/matching/{cat}/{user}/application/found',[MatchingController::class, 'foundRequest'])->name('found.request');
 
+    //猫の看取り報告確認ページの表示
+    Route::get('/matching/{cat}/{user}/application/dead',[MatchingController::class, 'dead'])->name('matching.dead');
+    //看取り報告送信
+    Route::post('/matching/{cat}/{user}/application/dead',[MatchingController::class, 'deadRequest'])->name('dead.request');
 
     // マッチングした猫とのチャット画面表示
     

@@ -1,8 +1,6 @@
 @extends('user.home')
 @section('title', 'search')
 @section('content')
-
-
 <section class="py-20 bg-blueGray-50">
     <div class="container px-4 mx-auto">
         <h2>保護猫検索</h2>
@@ -10,6 +8,12 @@
             @csrf
             <div class="flex mt-12 mb-6">
                 <div class="flex items-center mr-20">
+                    <label class="block mr-6 text-sm font-medium mb-2" for="image">エリア</label>
+                    <select id="area" class="appearance-none block pl-4 pr-8 py-3 mb-2 text-sm bg-white border rounded" name="area_id">
+                        @foreach($areas as $area)
+                        <option value="{{ $area->id }}">{{ $area->area }}</option>
+                        @endforeach
+                    </select>
                     <label class="block mr-6 text-sm font-medium mb-2" for="image">性別</label>
                     @foreach($genders as $gender)
                     <label>
@@ -33,12 +37,9 @@
                             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
                         </svg>
                     </div>
-                </div>
-                
+                </div>    
             </div>
         </form>
-
-
         <div class="flex flex-wrap">
             @foreach($cats as $cat)
                 <div class="catcontainer w-full md:w-1/4 py-5 md:px-5">

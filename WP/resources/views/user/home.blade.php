@@ -44,13 +44,13 @@
 
 <main class="container flex px-4 mx-auto">
     <!-- ▼▼▼▼メニュー▼▼▼▼　-->
-    <div class="menu-container w-1/3 h-auto bg-red-200">
-        @include('user.user-menu')
+    <div class="menu-container w-1/4 ">
+        @include('user.component.user-menu')
     </div>
 
     
     <!-- ▼▼▼▼ページ毎の個別内容▼▼▼▼　-->
-    <div class="content w-2/3 h-screen bg-blue-200">
+    <div class="content w-3/4 px-6">
         @yield('content')
     </div>
 

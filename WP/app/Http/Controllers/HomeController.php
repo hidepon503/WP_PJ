@@ -33,17 +33,35 @@ class HomeController extends Controller
         // user_catsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードを取得する
         $user_cats = UserCat::where('user_id', auth()->id())->with('cat.admin')->get();
 
+        // Matchingsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードのマッチング申請を出している猫のみを取得する
+        $matchingRequests = Matching::where('user_id', auth()->id())
+                            ->where('request_id', 1)
+                            ->with('cat.admin')
+                            ->get();
+
         // Matchingsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードを取得する
         $matchings = Matching::where('user_id', auth()->id())
                             ->where('request_id', 2)
                             ->with('cat.admin')
                             ->get();
+        // Matchingsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードのマッチング申請を出している猫のみを取得する
+        $matchingRequests = Matching::where('user_id', auth()->id())
+                            ->where('request_id', 1)
+                            ->with('cat.admin')
+                            ->get();
+
+        // Matchingsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードのマッチング申請を出している猫のみを取得する
+        $lostchilds = Matching::where('user_id', auth()->id())
+                            ->where('request_id', 6,7 )
+                            ->with('cat.admin')
+                            ->get();
 
 
         // 取得した猫の情報をビューに渡す
-        return view('user.index', compact('cats', 'user_cats', 'matchings'));
+        return view('user.index', compact('cats', 'user_cats', 'matchings', 'matchingRequests'));
     }
 
+    // 猫の紹介ページのチャット画面を表示。
     public function show(Cat $cat)
     {
         // <a href="{{ route('cat.show', $cat->id) }}" で渡された猫のidを元に、catsテーブルから該当する猫の情報を取得する
@@ -54,6 +72,33 @@ class HomeController extends Controller
         $cat->age = $this->calculateAge($cat->birthday);
 
         return view('user.show', compact('cat', 'admin'));
+
+    }
+
+    // 猫の紹介ページのチャットを表示。
+    public function showChat(Cat $cat)
+    {
+        // <a href="{{ route('cat.show', $cat->id) }}" で渡された猫のidを元に、catsテーブルから該当する猫の情報を取得する
+        $cat = Cat::find($cat->id);
+        // catsテーブルから取得したadmin_idを元に、adminsテーブルから該当する管理者の情報を取得する
+        $admin = $cat->admin;
+        // 2. 各Catインスタンスにリアルタイムの年齢を計算するメソッドを追加
+        $cat->age = $this->calculateAge($cat->birthday);
+        return view('user.show', compact('cat', 'admin'));
+
+    }
+
+    //猫の詳細ページの登録団体の紹介ページを表示。
+    public function showAdmin(Cat $cat)
+    {
+        // <a href="{{ route('cat.show', $cat->id) }}" で渡された猫のidを元に、catsテーブルから該当する猫の情報を取得する
+        $cat = Cat::find($cat->id);
+        // catsテーブルから取得したadmin_idを元に、adminsテーブルから該当する管理者の情報を取得する
+        $admin = $cat->admin;
+        // 2. 各Catインスタンスにリアルタイムの年齢を計算するメソッドを追加
+        $cat->age = $this->calculateAge($cat->birthday);
+
+        return view('user.admin', compact('cat', 'admin'));
 
     }
 

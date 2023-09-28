@@ -59,6 +59,12 @@ Route::middleware('auth:admin')->group(function(){
     Route::post('/match/{matching}', [AdminMatchingController::class, 'returnApprove'])->name('return.approve');
     // 返却申請の拒否
     Route::post('/match/{matching}/reject', [AdminMatchingController::class, 'reject'])->name('match.reject');
+
+    // // 返却された猫の一覧を取得
+    // Route::get('/contract/return', [AdminUserCatController::class, 'return'])->name('return.complete');
+    // // 特定の返却された猫の詳細を表示
+    // Route::get('/contract/return/{user_cat}', [AdminUserCatController::class, 'returnShow'])->name('return.show');
+
     
     // 保護団体が登録した猫の契約一覧を取得
     Route::get('/contract', [AdminUserCatController::class, 'contractIndex'])->name('contract.index');
@@ -70,14 +76,29 @@ Route::middleware('auth:admin')->group(function(){
     Route::post('/contract/edit/{user_cat}/', [AdminUserCatController::class, 'contractUpdate'])->name('contract.update');
     // 特定の契約の削除処理（誤って契約処理をしてしまった時のみ利用すること）
     Route::post('/contract/edit/{user_cat}/delete', [AdminUserCatController::class, 'contractDestroy'])->name('contract.destroy');
-    // 返却された猫の一覧を取得
-    Route::get('/contract/return', [AdminUserCatController::class, 'return'])->name('return.complete');
-    // 特定の返却された猫の詳細を表示
-    Route::get('/contract/return/{user_cat}', [AdminUserCatController::class, 'returnShow'])->name('return.show');
+
+
+    // 迷子になった猫の一覧を取得
+    Route::get('/contract/lost', [AdminMatchingController::class, 'lost'])->name('lost.index');
+    // 特定の迷子になった猫の詳細を表示
+    Route::get('/contract/lost/{user_cat}', [AdminMatchingController::class, 'lostShow'])->name('lost.show');
+    // 迷子申請の受理
+    Route::post('/contract/lost/{user_cat}', [AdminMatchingController::class, 'lostApprove'])->name('lost.approve');
+
+    // 発見された猫の一覧を取得
+    Route::get('/contract/found', [AdminMatchingController::class, 'found'])->name('found.index');
+    // 特定の発見された猫の詳細を表示
+    Route::get('/contract/found/{user_cat}', [AdminMatchingController::class, 'foundShow'])->name('found.show');
+    // 発見報告の受理
+    Route::post('/contract/found/{user_cat}', [AdminMatchingController::class, 'foundApprove'])->name('found.approve');
+
     // 契約者が看取った猫の一覧を取得
-    Route::get('/contract/death', [AdminUserCatController::class, 'death'])->name('death.index');
+    Route::get('/contract/death', [AdminMatchingController::class, 'death'])->name('death.index');
     // 特定の看取った猫の詳細を表示
-    Route::get('/contract/death/{user_cat}', [AdminUserCatController::class, 'deathShow'])->name('death.show');
+    Route::get('/contract/death/{user_cat}', [AdminMatchingController::class, 'deathShow'])->name('death.show');
+    // 看取り報告の受理
+    Route::post('/contract/death/{user_cat}', [AdminMatchingController::class, 'deathApprove'])->name('death.approve');
+
     
 
 

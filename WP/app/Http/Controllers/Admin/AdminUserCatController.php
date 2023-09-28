@@ -23,9 +23,6 @@ class AdminUserCatController extends Controller
         return view('admin.userCatIndex', ['userCats' => $userCats]);
     }
 
-
-        
-
     /**
      * 特定の猫と飼い主であるユーザーの詳細を表示する
      */

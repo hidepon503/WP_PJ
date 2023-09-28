@@ -21,7 +21,7 @@ class RelationsTableSeeder extends Seeder
         ];
         Relation::create($param);
         $param = [
-            'name' => '看取り'
+            'name' => '死亡'
         ];
         Relation::create($param);
     }
