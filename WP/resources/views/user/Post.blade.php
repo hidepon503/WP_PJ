@@ -51,7 +51,7 @@
 </section>
 
 <script>
-
+// 修正中
     // 画像プレビュー
     document.getElementById('image').addEventListener('change', e => {
         const previewImageNode = document.getElementById('previewImage')
