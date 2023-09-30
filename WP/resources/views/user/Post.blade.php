@@ -1,7 +1,7 @@
 @extends('user.catShow')
 @section('title', 'CAT POST')
 @section('catManu')
-
+  
 <section class="py-8">
     <div class="container px-4 mx-auto">
         <div class="py-4 bg-white rounded">
