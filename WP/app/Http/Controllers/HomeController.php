@@ -46,6 +46,18 @@ class HomeController extends Controller
                             ->with('cat.admin')
                             ->get();
 
+        // Matchingsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードを取得する
+        $returnRequests = Matching::where('user_id', auth()->id())
+                            ->where('request_id', 4)
+                            ->with('cat.admin')
+                            ->get();
+        
+        // Matchingsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードを取得する
+        $returns = Matching::where('user_id', auth()->id())
+                            ->where('request_id', 5)
+                            ->with('cat.admin')
+                            ->get();
+
         // Matchingsテーブルから、ログインしているユーザーのidと一致するuser_idを持つレコードの迷子申請を出している猫のみを取得する
         $lostchilds = Matching::where('user_id', auth()->id())
                             ->whereIn('request_id', [6,7] )

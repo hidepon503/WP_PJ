@@ -26,19 +26,35 @@
 @section('content')
 
 @if(!$matchingRequests->isEmpty())  {{-- $matchingsにデータが存在する場合 --}}
-    @include ('user.component.catlist-component', ['listTitle' => 'マッチング申請中'])
+    @include ('user.component.catlist',
+    [
+        'listTitle' => 'マッチング申請中',
+        'requests' => $matchingRequests,
+    ])
 @endif
 
 @if(!$matchings->isEmpty())  {{-- $matchingsにデータが存在する場合 --}}
-    @include ('user.component.catlist-component', ['listTitle' => 'My Pets'])
+    @include ('user.component.catlist',
+    [
+        'listTitle' => 'My Pets',
+        'requests' => $matchings,
+    ])
 @endif
 
 @if(!$lostchilds->isEmpty())  {{-- $lostchildsにデータが存在する場合 --}}
-    @include ('user.component.catlist-component', ['listTitle' => '迷子中'])
+    @include ('user.component.catlist',
+    [
+        'listTitle' => '迷子中',
+        'requests' => $lostchilds,
+    ])
 @endif
 
 @if(!$deads->isEmpty())  {{-- $lostchildsにデータが存在する場合 --}}
-    @include ('user.component.catlist-component', ['listTitle' => '死亡'])
+    @include ('user.component.catlist', 
+    [
+        'listTitle' => '死亡',
+        'requests' => $deads,
+        ])
 @endif
 
 
