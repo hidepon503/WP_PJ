@@ -49,7 +49,8 @@
         @endif
       </div>
       <div class="xl:w-1/3 md:w-1/2 p-4">
-        @if($matching->request_id == 6)
+        @if(in_array($matching->request_id, [1, 2, 4, 5, 8, 9, 10]))
+
             <!-- request_id が 6 のときにリンクを表示 -->
           <a href='{{ route('matching.found', ['cat' => $matching->cat->id, 'user' => auth() -> id()])  }}'>
         @endif
@@ -63,7 +64,8 @@
             <h2 class="text-lg text-gray-900 font-medium title-font mb-2">迷子発見報告</h2>
             <p class="leading-relaxed text-base">迷子だったねこを見つけた時は、こちらからご報告をお願いします。</p>
           </div>
-        @if($matching->request_id == 2)
+        @if(in_array($matching->request_id, [1, 2, 4, 5, 8, 9, 10]))
+
           </a>
         @endif
       </div>

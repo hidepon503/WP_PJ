@@ -33,7 +33,7 @@
                 
                 <p>マッチング申請済</p>
                 @endif
-            @else
+            @elseif($cat->status_id == 4)
                 <div class="inline-block flex items-center justify-center mx-auto px-8 h-8  text-xs font-semibold leading-none bg-white text-blue-600 border-blue-600 rounded ml-3" type="submit">交渉中
                 </div>
             @endif

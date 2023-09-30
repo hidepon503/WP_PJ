@@ -196,4 +196,6 @@ class CatController extends Controller
         
         return view('cats.show', compact('admin','cat','age'));
     }
+
+    
 }

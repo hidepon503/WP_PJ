@@ -43,6 +43,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/favorite/toggle/{catId}', [FavoriteController::class, 'toggleFavorite'])->name('favorite.toggle');
     // 猫のお気に入り一覧
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+
+    //迷子猫一覧表示
+    Route::get('/lostchild', [HomeController::class, 'lostchild'])->name('lostchild.search'); 
+    //迷子絞り込み検索
+    Route::get('/lostchild/search', [HomeController::class, 'lostchildSearch'])->name('lostchild.searchResult');
+    //迷子猫詳細表示
+    Route::get('/lostchild/{cat}', [HomeController::class, 'lostchildShow'])->name('lostchild.show');
     
     // 猫のマッチング申請
     Route::post('/cats/{cat}/match', [MatchingController::class, 'store'])->name('match.store');

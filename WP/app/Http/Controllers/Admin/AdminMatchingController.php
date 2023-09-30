@@ -80,6 +80,11 @@ class AdminMatchingController extends Controller
         // matchingテーブルのrequest_idを2に更新
         Matching::where('id', $matchingId)->update(['request_id' => '3']);
 
+        // matchingsテーブルのcat_idと同じcatテーブルのレコードのstatus_idを変更
+        $cat = Cat::find($cat_id);
+        $cat->status_id = '2';//募集中
+        $cat->save();
+
         return redirect()->back()->with('message', 'Matching rejected.');
     }
 

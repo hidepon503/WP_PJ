@@ -248,6 +248,13 @@ class MatchingController extends Controller
         // ログインしているユーザーのIDと一致するuser_idを持つレコードをuser_catsテーブルから取得し、変数に代入。さらにuser_catsテーブルと外部キー接続しているrelationsテーブルから、nameを取得する。
         $user_cat = UserCat::where('user_id', auth()->id())->where('cat_id', $cat_id)->with('relation')->first();
 
+        // matchingsテーブルのcat_idと同じcatテーブルのレコードのstatus_idを変更
+        $cat = Cat::find($cat_id);
+        $cat->status_id = '6';//迷子中
+        $cat->save();
+
+
+
         if($matching->cat->birthday) {
             $birthday = new \Carbon\Carbon($matching->cat->birthday);
             $now = \Carbon\Carbon::now();
@@ -261,8 +268,9 @@ class MatchingController extends Controller
         $gender = $matching->cat->gender;
 
         // matchingsテーブルの任意のレコードのデータの更新が完了したら、引取り申請完了ページにリダイレクト
-        return view('user.lostchildComplete', compact('matching', 'user_cat', 'age','admin', 'kind', 'gender'));
+        return view('user.lostchildComplete', compact('matching', 'user_cat', 'cat', 'age','admin', 'kind', 'gender'));
     }
+
     
     // 迷子発見報告の確認ページを表示
     public function found($cat_id, $user_id)
@@ -273,6 +281,11 @@ class MatchingController extends Controller
         if (!$matching) {
             abort(404);  // 見つからない場合は404エラーを返す
         }
+
+        // matchingsテーブルのcat_idと同じcatテーブルのレコードのstatus_idを変更
+        $cat = Cat::find($cat_id);
+        $cat->status_id = '3';//迷子中
+        $cat->save();
 
         // ログインしているユーザーのIDと一致するuser_idを持つレコードをuser_catsテーブルから取得し、変数に代入。さらにuser_catsテーブルと外部キー接続しているrelationsテーブルから、nameを取得する。
         $user_cat = UserCat::where('user_id', auth()->id())->where('cat_id', $cat_id)->with('relation')->first();
@@ -301,6 +314,11 @@ class MatchingController extends Controller
         if (!$matching) {
             abort(404);  // 見つからない場合は404エラーを返す
         }
+
+        // matchingsテーブルのcat_idと同じcatテーブルのレコードのstatus_idを変更
+        $cat = Cat::find($cat_id);
+        $cat->status_id = '3';//迷子中
+        $cat->save();
 
         // リクエストから受け取ったrequest_idでカラムを更新
         $matching->request_id = $request->input('request_id');
@@ -368,6 +386,11 @@ class MatchingController extends Controller
         $matching->request_id = $request->input('request_id');
         $matching->save();
 
+        // matchingsテーブルのcat_idと同じcatテーブルのレコードのstatus_idを変更
+        $cat = Cat::find($cat_id);
+        $cat->status_id = '7';//死亡
+        $cat->save();
+
         // ログインしているユーザーのIDと一致するuser_idを持つレコードをuser_catsテーブルから取得し、変数に代入。さらにuser_catsテーブルと外部キー接続しているrelationsテーブルから、nameを取得する。
         $user_cat = UserCat::where('user_id', auth()->id())->where('cat_id', $cat_id)->with('relation')->first();
 
@@ -384,7 +407,7 @@ class MatchingController extends Controller
         $gender = $matching->cat->gender;
 
         // matchingsテーブルの任意のレコードのデータの更新が完了したら、引取り申請完了ページにリダイレクト
-        return view('user.deadComplete', compact('matching', 'user_cat', 'age','admin', 'kind', 'gender'));
+        return view('user.deadComplete', compact('matching', 'user_cat', 'cat', 'age','admin', 'kind', 'gender'));
     }
 
 }

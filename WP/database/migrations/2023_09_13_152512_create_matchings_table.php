@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('cat_id');
             $table->foreignId('request_id')->notNull();
             $table->string('reason')->nullable()->comment('理由');
+            $table->string('message')->nullable()->comment('メッセージ');
             $table->timestamps();
 
             // 外部キー制約

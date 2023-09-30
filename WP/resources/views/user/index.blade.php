@@ -27,12 +27,21 @@
 
 @if(!$matchingRequests->isEmpty())  {{-- $matchingsにデータが存在する場合 --}}
     @include ('user.component.catlist-component', ['listTitle' => 'マッチング申請中'])
-    
 @endif
 
 @if(!$matchings->isEmpty())  {{-- $matchingsにデータが存在する場合 --}}
     @include ('user.component.catlist-component', ['listTitle' => 'My Pets'])
 @endif
+
+@if(!$lostchilds->isEmpty())  {{-- $lostchildsにデータが存在する場合 --}}
+    @include ('user.component.catlist-component', ['listTitle' => '迷子中'])
+@endif
+
+@if(!$deads->isEmpty())  {{-- $lostchildsにデータが存在する場合 --}}
+    @include ('user.component.catlist-component', ['listTitle' => '死亡'])
+@endif
+
+
 
 
 @if($matchings->isEmpty())  {{-- $matchingsにデータが存在する場合 --}}

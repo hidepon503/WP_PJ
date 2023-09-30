@@ -113,7 +113,7 @@
                                 <p class="text-l text-center">{{ $cat->name }}</p>
                                 <p class="text-xs text-center text-blueGray-400">{{ $cat->age }}歳  {{ $cat->gender->gender }}　{{ $cat->admin->prefecture }}</p>
                                 <p class="text-blueGray-400 text-center text-xs">{{ $cat->kind->kind }}</p>
-                                @livewire('favorite-component', ['catId' => $cat->id])
+                              
                             </div>
                         </div>
                         <p class="leading-loose text-blueGray-400 mb-5 whitespace-pre-line">
