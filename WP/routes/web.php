@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MatchingController;
+use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('index');
@@ -60,9 +61,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // マッチングした猫の詳細表示
     Route::get('/matching/{cat}/{user}', [MatchingController::class, 'show'])->name('matching.show');
+
+    // マッチングした猫のPOST投稿ページ表示
+    Route::get('/matching/{cat}/{user}/post',[PostController::class, 'create'])->name('post.create');
+    // マッチングした猫のPOST投稿送信
+    Route::post('/matching/{cat}/{user}/post',[PostController::class, 'store'])->name('post.store');
+    
+
+
+
+
     // マッチングした猫の各種申請ページ表示
     Route::get('/matching/{cat}/{user}/application',[MatchingController::class, 'application'])->name('application');
-
     // マッチングした猫の引取り申請確認ページの表示
     Route::get('/matching/{cat}/{user}/application/comeback',[MatchingController::class, 'comeback'])->name('matching.comeback');
     //引取り申請送信

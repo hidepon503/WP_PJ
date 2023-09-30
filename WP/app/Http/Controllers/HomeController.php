@@ -75,7 +75,7 @@ class HomeController extends Controller
         return view('user.index', compact('cats', 'user_cats', 'matchings', 'matchingRequests' , 'lostchilds', 'deads' ));
     }
 
-    // 猫の紹介ページのチャット画面を表示。
+    // 猫の紹介ページの画面を表示。
     public function show(Cat $cat)
     {
         // <a href="{{ route('cat.show', $cat->id) }}" で渡された猫のidを元に、catsテーブルから該当する猫の情報を取得する

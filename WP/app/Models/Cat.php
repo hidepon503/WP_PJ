@@ -34,6 +34,10 @@ class Cat extends Model
     {
         return Carbon::parse($this->birthday)->age;
     }
+    public function post()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
 
     public function admin()
     {

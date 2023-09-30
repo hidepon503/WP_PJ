@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Cat;
 use App\Models\Request as RequestModel;
 use App\Models\UserCat;
+use App\Models\Post;
+use App\Models\PostImage;
+use App\Models\PostVideo;
 
 
 class MatchingController extends Controller
@@ -99,6 +102,26 @@ class MatchingController extends Controller
         // ログインしているユーザーのIDと一致するuser_idを持つレコードをuser_catsテーブルから取得し、変数に代入。さらにuser_catsテーブルと外部キー接続しているrelationsテーブルから、nameを取得する。
         $user_cat = UserCat::where('user_id', auth()->id())->where('cat_id', $cat_id)->with('relation')->first();
 
+        //postテーブルのcat_idと一致するレコードを取得
+        $posts = Post::where('cat_id', $cat_id)->get();
+        //forechで回して、post_imagesテーブルとpost_videosテーブルから最初の画像と動画を取得
+        foreach($posts as $post) {
+            // post_imagesテーブルから最初の画像を取得
+            $firstImage = PostImage::where('post_id', $post->id)->first();
+            if ($firstImage) {
+                $post->media_path = $firstImage->image_path;
+                $post->media_type = 'image';
+                continue;
+            }
+        
+            // post_videosテーブルから最初の動画を取得
+            $firstVideo = PostVideo::where('post_id', $post->id)->first();
+            if ($firstVideo) {
+                $post->media_path = $firstVideo->video_path;
+                $post->media_type = 'video';
+            }
+        }
+
         if($matching->cat->birthday) {
             $birthday = new \Carbon\Carbon($matching->cat->birthday);
             $now = \Carbon\Carbon::now();
@@ -111,7 +134,7 @@ class MatchingController extends Controller
         $kind = $matching->cat->kind;
         $gender = $matching->cat->gender;
 
-        return view('user.matchingShow', compact('matching',  'user_cat', 'age','admin', 'kind', 'gender'));
+        return view('user.matchingShow', compact('matching',  'user_cat', 'age','admin', 'kind', 'gender', 'posts', ));
     }
 
     // マッチングした猫の各種申請ページを表示

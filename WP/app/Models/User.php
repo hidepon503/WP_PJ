@@ -57,4 +57,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Cat::class, 'favorites');
     }
 
+    public function posts()
+    {
+
+        return $this->hasMany('App\Models\Post');
+    }
+
 }
