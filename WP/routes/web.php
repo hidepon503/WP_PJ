@@ -66,6 +66,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/matching/{cat}/{user}/post',[PostController::class, 'create'])->name('post.create');
     // マッチングした猫のPOST投稿送信
     Route::post('/matching/{cat}/{user}/post',[PostController::class, 'store'])->name('post.store');
+    // マッチングした猫のPOST内容表示
+    Route::get('/matching/{cat}/{user}/post/{post}',[PostController::class, 'show'])->name('post.show');
+    // マッチングした猫のPOST編集ページ表示
+    Route::get('/matching/{cat}/{user}/post/{post}/edit',[PostController::class, 'edit'])->name('post.edit');
+    // マッチングした猫のPOST編集送信
+    Route::patch('/matching/{cat}/{user}/post/{post}',[PostController::class, 'update'])->name('post.update');
+    // マッチングした猫のPOST削除
+    Route::delete('/matching/{cat}/{user}/post/{post}',[PostController::class, 'destroy'])->name('post.destroy');
+
     
 
 
