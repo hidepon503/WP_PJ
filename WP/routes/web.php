@@ -60,20 +60,20 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // 未実装ここまで
 
     // マッチングした猫の詳細表示
-    Route::get('/matching/{cat}/{user}', [MatchingController::class, 'show'])->name('matching.show');
+    Route::get('/matching/{cat}/', [MatchingController::class, 'show'])->name('matching.show');
 
     // マッチングした猫のPOST投稿ページ表示
-    Route::get('/matching/{cat}/{user}/post',[PostController::class, 'create'])->name('post.create');
+    Route::get('/matching/{cat}/post',[PostController::class, 'create'])->name('post.create');
     // マッチングした猫のPOST投稿送信
-    Route::post('/matching/{cat}/{user}/post',[PostController::class, 'store'])->name('post.store');
+    Route::post('/matching/{cat}/post',[PostController::class, 'store'])->name('post.store');
     // マッチングした猫のPOST内容表示
-    Route::get('/matching/{cat}/{user}/post/{post}',[PostController::class, 'show'])->name('post.show');
+    Route::get('/matching/{cat}/post/{post}',[PostController::class, 'show'])->name('post.show');
     // マッチングした猫のPOST編集ページ表示
-    Route::get('/matching/{cat}/{user}/post/{post}/edit',[PostController::class, 'edit'])->name('post.edit');
+    Route::get('/matching/{cat}/post/{post}/edit',[PostController::class, 'edit'])->name('post.edit');
     // マッチングした猫のPOST編集送信
-    Route::patch('/matching/{cat}/{user}/post/{post}',[PostController::class, 'update'])->name('post.update');
+    Route::patch('/matching/{cat}/post/{post}',[PostController::class, 'update'])->name('post.update');
     // マッチングした猫のPOST削除
-    Route::delete('/matching/{cat}/{user}/post/{post}',[PostController::class, 'destroy'])->name('post.destroy');
+    Route::delete('/matching/{cat}/post/{post}',[PostController::class, 'destroy'])->name('post.destroy');
 
     
 

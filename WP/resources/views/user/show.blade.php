@@ -5,7 +5,7 @@
     @include('user.component.show-component')
     @include('user.component.manu-component')
     <div class="px-4 py-6">
-        @include('user.component.post-component')
+        {{-- @include('user.component.postIndex') --}}
     </div>
 </section>
 <section>

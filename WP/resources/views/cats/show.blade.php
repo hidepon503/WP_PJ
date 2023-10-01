@@ -1,83 +1,90 @@
 @extends('layouts.admin')
-@section('title', '{{ $cat->name }}.のページ')
+@section('title', '猫の詳細ページ')
 
 @section('content')
-  <div class="px-6 bg-white shadow rounded h-full py-10">
-      {{-- 編集ボタン --}}
-      <div class="ml-auto flex justify-end">
-          <a href="{{ route('edit.cats', $cat->id) }}" class="mr-2">
-              <button class="py-2 px-3 text-xs text-white font-semibold bg-indigo-500 rounded-md">編集</button>
+
+    <div class="px-6 bg-white shadow rounded h-full py-10">
+{{-- @include('cats.component.catShow') --}}
+<div class="flex pl-6 pt-12 items-center gap-x-4 ">
+    <div class="w-40 h-40 rounded-full overflow-hidden">
+        <img class="w-full h-full object-cover" src="{{ asset('storage/images/cats/' .$cat->image )}}" alt="$cat->name">
+    </div>
+    <div class="grow pl-6">
+        <h3 class="font-medium text-gray-800 dark:text-gray-200">
+            {{ $cat->name }}
+            <span class="ml-2">{{ $cat->gender->gender }}</span>
+            <span class="ml-2">{{ $age }}歳</span>
+        </h3>
+        <p class="text-xs mb-4 uppercase text-gray-500">
+            契約状況：{{ $cat->status->name  }}
+            <span class="ml-4">ユーザー：</span>
+            @if(isset($userByCat[$cat->id]))
+                <span class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                    <span>
+                        {{ $userByCat[$cat->id]->name }}
+                    </span>
+                </span>
+            @else
+                <span>ユーザーなし</span>
+            @endif
+        </p>
+        <p>種類：{{ $cat->kind->kind }}</p>
+        <p>生年月日：{{ $cat->birthday }}
+            <span class="ml-4">体重：{{ $cat->weight }}kg</span>
+        </p>
+        <p class="mt-3 text-gray-500">
+            {{ $cat->introduction }}
+        </p>
+    </div>
+</div>
+{{-- @include('cats.component.manu') --}}
+{{-- メニューバー --}}
+  <div class="text-gray-600 mt-4 px-8 body-font">
+    <div class="container mx-auto text-align flex flex-wrap justify-center py-3 flex-col bg-gray-100 md:flex-row items-center rounded-full">
+      <nav class=" md:ml-auto  md:mr-auto flex flex-wrap items-center text-base justify-center">
+          <a href='{{ route('cat.show', $cat->id)  }}' class="hover:text-gray-900">
+              <div class="w-30">ポスト一覧</div>
           </a>
-      </div>
-      <div class="mb-4 flex">
-          <!---->
-          <img class="h-64 w-64 rounded-full object-cover" src="{{ asset('storage/images/cats/' . $cat->image) }}" alt="{{ $cat->name }}">
-          <div class="pl-16 ">
-            {{-- CSSグリッドを利用した２カラムレイアウトで、猫の詳細を表示 --}}
-            <div class="grid grid-cols-4 gap-x-16 gap-y-8 text-2xl">
-                <label for="cat-name" class="grid-item col-span-1 font-bold">名前</label>
-                <div id="cat-name" class="grid-item col-span-3">{{ $cat->name }}</div>
-
-                <label for="cat-admin-name" class="grid-item col-span-1 font-bold">登録団体名</label>
-                <div id="cat-admin-name" class="grid-item col-span-3">{{ $cat->admin->name }}</div>
-
-                <label for="cat-gender" class="grid-item col-span-1 font-bold">性別</label>
-                <div id="cat-gender" class="grid-item col-span-3">{{ $cat->gender->gender }}</div>
-
-                <label for="cat-kind" class="grid-item col-span-1 font-bold">種類</label>
-                <div id="cat-kind" class="grid-item col-span-3">{{ $cat->kind->kind }}</div>
-
-                <label for="cat-birthday" class="grid-item col-span-1 font-bold">生年月日</label>
-                <div id="cat-birthday" class="grid-item col-span-3">{{ $cat->birthday }}</div>
-
-                <label for="cat-age" class="grid-item col-span-1 font-bold">年齢</label>
-                <div id="cat-age" class="grid-item col-span-3">{{ $age }}歳</div>
-
-                <label for="cat-weight" class="grid-item col-span-1 font-bold">体重</label>
-                <div id="cat-weight" class="grid-item col-span-3">{{ $cat->weight }}kg</div>
-
-                <label for="cat-introduction" class="grid-item col-span-1 font-bold">紹介文</label>
-                <div id="cat-introduction" class="grid-item col-span-3">{{ $cat->introduction }}</div>
-
-                <!-- 将来的に導入したいカラム -->
-                <!-- 以下のカラムはコメントアウトされていたので、同様にコメントアウトしています -->
-                {{-- 
-                <label for="cat-color" class="grid-item col-span-1 font-bold">毛色</label>
-                <div id="cat-color" class="grid-item col-span-3">{{ $cat->color }}</div>
-                
-                <label for="cat-feature" class="grid-item col-span-1 font-bold">特徴</label>
-                <div id="cat-feature" class="grid-item col-span-3">{{ $cat->feature }}</div>
-                
-                <label for="cat-personality" class="grid-item col-span-1 font-bold">性格</label>
-                <div id="cat-personality" class="grid-item col-span-3">{{ $cat->personality }}</div>
-                
-                <label for="cat-health" class="grid-item col-span-1 font-bold">健康状態</label>
-                <div id="cat-health" class="grid-item col-span-3">{{ $cat->health }}</div>
-                
-                <label for="cat-vaccine" class="grid-item col-span-1 font-bold">ワクチン接種</label>
-                <div id="cat-vaccine" class="grid-item col-span-3">{{ $cat->vaccine }}</div>
-                
-                <label for="cat-castration" class="grid-item col-span-1 font-bold">去勢・避妊手術</label>
-                <div id="cat-castration" class="grid-item col-span-3">{{ $cat->castration }}</div>
-                
-                <label for="cat-owner-name" class="grid-item col-span-1 font-bold">飼い主名</label>
-                <div id="cat-owner-name" class="grid-item col-span-3">{{ $cat->$user_id->name }}</div>
-                
-                <label for="cat-owner-email" class="grid-item col-span-1 font-bold">飼い主のEmail</label>
-                <div id="cat-owner-email" class="grid-item col-span-3">{{ $cat->$user_id->email }}</div>
-                
-                <label for="cat-owner-tel" class="grid-item col-span-1 font-bold">飼い主の電話番号</label>
-                <div id="cat-owner-tel" class="grid-item col-span-3">{{ $cat->$user_id->tel }}</div>
-                
-                <label for="cat-owner-postalcode" class="grid-item col-span-1 font-bold">飼い主の郵便番号</label>
-                <div id="cat-owner-postalcode" class="grid-item col-span-3">{{ $cat->$user_id->postalcode }}</div>
-                
-                <label for="cat-owner-address" class="grid-item col-span-1 font-bold">飼い主の住所</label>
-                <div id="cat-owner-address" class="grid-item col-span-3">{{ $cat->$user_id->address }}</div>
-                --}}
+          <a href='{{ route('cat.chat', [$cat->id , 'admin'=> $cat->admin->id, ]) }}' class="hover:text-gray-900">
+              <div class="w-30 mx-24">ユーザー情報</div>
+          </a>
+          <a href='{{ route('edit.cats', $cat->id) }}' class="hover:text-gray-900">
+              <div class="w-30">編集</div>
+          </a>
+      </nav>
+    </div>
+  </div>
+{{-- @include('cats.component.createButton') --}}
+<div class="container mx-auto mb-6">
+    <a href="{{ route("post.create", ['cat' => $cat->id]) }}">
+        <button class="mt-6 text-white font-semibold leading-none bg-blue-600 hover:bg-blue-700 rounded py-4 w-full" type="submit">新規投稿</button>
+    </a>
+</div>
+{{-- @include('cats.component.postIndex') --}}
+  <div class="flex flex-wrap -m-4">
+    @foreach($posts as $post)
+    <a class="w-1/3" href="{{ route('post.show',['cat' => $cat->id, 'post' => $post->id]) }}">
+      <div class=" lg: sm: p-4">
+        <div class="flex relative">
+          @if($post->media_type == 'image')
+          <img alt="gallery" class="absolute inset-0 w-full h-40 object-cover object-center" src="{{ asset('storage/' . $post_images->image_path) }}">
+          @elseif($post->media_type == 'video')
+          <video class="absolute inset-0 w-full h-40 object-cover object-center" controls>
+            <source src="{{ asset('storage/app/public/' . $post_videos->video_path) }}" type="video/mp4">
+            </video>
+            @endif
+            <div class="px-8 py-10 relative z-10 w-full h-40 border-4 border-gray-200 bg-white opacity-0 hover:opacity-50">
+              <h2 class="title-font text-lg font-medium text-gray-900 mb-3">{{ $post->title }}</h2>
+              <h1 class="tracking-widest text-sm title-font font-medium text-indigo-500 mb-1">{{ $post->body }}</h1>
             </div>
           </div>
-      </div>
+        </div>
+      </a>
+    @endforeach
+  </div>
+    </div>
+
+
 
 
 

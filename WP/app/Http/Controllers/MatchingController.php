@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Matching;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Cat;
 use App\Models\Request as RequestModel;
 use App\Models\UserCat;
@@ -91,10 +93,10 @@ class MatchingController extends Controller
     }
 
     //マッチングした猫の詳細ページを表示
-    public function show($cat_id, $user_id)
+    public function show($cat_id)
     {
         // cat_idとuser_idを使って、正確なmatchingを取得
-        $matching = Matching::where('cat_id', $cat_id)->where('user_id', $user_id)->first();
+        $matching = Matching::where('cat_id', $cat_id)->where('user_id', auth()->id())->first();
 
         if (!$matching) {
             abort(404);  // 見つからない場合は404エラーを返す
@@ -104,23 +106,10 @@ class MatchingController extends Controller
         $user_cat = UserCat::where('user_id', auth()->id())->where('cat_id', $cat_id)->with('relation')->first();
 
         //postテーブルのcat_idと一致するレコードを取得
-        $posts = Post::where('cat_id', $cat_id)->get();
-        //forechで回して、post_imagesテーブルとpost_videosテーブルから最初の画像と動画を取得
-        foreach($posts as $post) {
-            // post_imagesテーブルから最初の画像を取得
-            $firstImage = PostImage::where('post_id', $post->id)->first();
-            if ($firstImage) {
-                $post->media_path = $firstImage->image_path;
-                $post->media_type = 'image';
-                continue;
-            }
+        $posts = Post::with(['images', 'videos'])->where('cat_id', $cat_id)->get();
         
-            // post_videosテーブルから最初の動画を取得
-            $firstVideo = PostVideo::where('post_id', $post->id)->first();
-            if ($firstVideo) {
-                $post->media_path = $firstVideo->video_path;
-                $post->media_type = 'video';
-            }
+        foreach ($posts as $post) {
+            $post->getFirstMedia();
         }
 
         if($matching->cat->birthday) {

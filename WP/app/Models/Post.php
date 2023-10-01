@@ -33,4 +33,23 @@ class Post extends Model
     {
         return $this->hasMany(PostVideo::class);
     }
+
+    public function getFirstMedia()
+    {
+        // この投稿に関連する最初の画像を取得
+        $firstImage = $this->images->first();
+        if ($firstImage) {
+            $this->media_path = $firstImage->image_path;
+            $this->media_type = 'image';
+            return;
+        }
+    
+        // この投稿に関連する最初の動画を取得
+        $firstVideo = $this->videos->first();
+        if ($firstVideo) {
+            $this->media_path = $firstVideo->video_path;
+            $this->media_type = 'video';
+            return;
+        }
+    }
 }

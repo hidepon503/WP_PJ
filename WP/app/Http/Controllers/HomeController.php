@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\Matching;
 use App\Models\UserCat;
 use App\Models\Area;
+use App\Models\Post;
 
 
 class HomeController extends Controller
@@ -85,7 +86,14 @@ class HomeController extends Controller
         // 2. 各Catインスタンスにリアルタイムの年齢を計算するメソッドを追加
         $cat->age = $this->calculateAge($cat->birthday);
 
-        return view('user.show', compact('cat', 'admin'));
+        //postテーブルのcat_idと一致するレコードを取得
+        $posts = Post::with(['images', 'videos'])->where('cat_id', $cat->id)->get();
+        
+        foreach ($posts as $post) {
+            $post->getFirstMedia();
+        }
+
+        return view('user.show', compact('cat', 'admin', 'posts'));
 
     }
 

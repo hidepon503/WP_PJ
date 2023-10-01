@@ -14,7 +14,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Models\CatImage;
 use Carbon\Carbon;
+use App\Models\UserCat;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+use App\Models\Post;
+use App\Models\PostImage;
+use App\Models\PostVideo;
 
 
 // ... 以下、クラスの定義などのコード
@@ -36,9 +41,18 @@ class CatController extends Controller
             $cat->age = Carbon::parse($cat->birthday)->age;
             return $cat;
         });
+
+        $catIds = $cats->pluck('id');
+        $userCats = UserCat::whereIn('cat_id', $catIds)->with('user')->get();
+        // cat_idをキーとして、関連するユーザーを取得
+        $userByCat = [];
+        foreach ($userCats as $userCat) {
+            $userByCat[$userCat->cat_id] = User::find($userCat->user_id);
+        }
         
+        $cats = Cat::paginate(50);
         
-        return view('cats.index', compact('admin','cats'));
+        return view('cats.index', compact('admin','cats','userByCat'));
     }
 
     /**
@@ -104,8 +118,23 @@ class CatController extends Controller
 
         // まず、ログインしている管理者の情報を取得しています。
         $admin = Auth::guard('admin')->user();
+
+        $catIds = $cat->pluck('id');
+        $userCats = UserCat::whereIn('cat_id', $catIds)->with('user')->get();
+        // cat_idをキーとして、関連するユーザーを取得
+        $userByCat = [];
+        foreach ($userCats as $userCat) {
+            $userByCat[$userCat->cat_id] = User::find($userCat->user_id);
+        }
+
+        //postテーブルのcat_idと一致するレコードを取得
+        $posts = Post::with(['images', 'videos'])->where('cat_id', $cat->id)->get();
         
-        return view('cats.show', compact('admin','cat','age'));
+        foreach ($posts as $post) {
+            $post->getFirstMedia();
+        }
+        
+        return view('cats.show', compact('admin','cat','age','userByCat','posts'));
     }
 
     /**
