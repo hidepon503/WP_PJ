@@ -53,9 +53,11 @@ class PostController extends Controller
         $gender = $matching->cat->gender;
 
         // マッチングしたねこのpost投稿ページにリダイレクト
-        return redirect()->route('user.post', compact('matching',  'user_cat', 'age','admin', 'kind', 'gender'));
+        return redirect()->route('post.create', compact('matching',  'user_cat', 'age','admin', 'kind', 'gender'));
     }
     
+
+
 
     /**
      * Store a newly created resource in storage.
