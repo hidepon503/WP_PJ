@@ -14,6 +14,8 @@ use App\Models\Matching;
 use App\Models\UserCat;
 use App\Models\Area;
 use App\Models\Post;
+use App\Models\PostImage;
+use App\Models\PostVideo;
 
 
 class HomeController extends Controller
@@ -79,15 +81,29 @@ class HomeController extends Controller
     // 猫の紹介ページの画面を表示。
     public function show(Cat $cat)
     {
-        // <a href="{{ route('cat.show', $cat->id) }}" で渡された猫のidを元に、catsテーブルから該当する猫の情報を取得する
-        $cat = Cat::find($cat->id);
-        // catsテーブルから取得したadmin_idを元に、adminsテーブルから該当する管理者の情報を取得する
+        $cat->load('admin','gender','kind');
         $admin = $cat->admin;
-        // 2. 各Catインスタンスにリアルタイムの年齢を計算するメソッドを追加
-        $cat->age = $this->calculateAge($cat->birthday);
 
+        // ここでは、猫の年齢を計算しています。
+        $age = Carbon::parse($cat->birthday)->age;
+
+        $catIds = $cat->pluck('id');
+        $userCats = UserCat::whereIn('cat_id', $catIds)->with('user')->get();
+        // cat_idをキーとして、関連するユーザーを取得
+        $userByCat = [];
+        foreach ($userCats as $userCat) {
+            $userByCat[$userCat->cat_id] = User::find($userCat->user_id);
+        }
+        
         //postテーブルのcat_idと一致するレコードを取得
         $posts = Post::with(['images', 'videos'])->where('cat_id', $cat->id)->get();
+        //postテーブルのidと一致するレコードを取得
+        $postIds = $posts->pluck('id');
+        
+        foreach ($posts as $post) {
+            $post->image = PostImage::where('post_id', $post->id)->first();
+            $post->video = PostVideo::where('post_id', $post->id)->first();
+        }
         
         foreach ($posts as $post) {
             $post->getFirstMedia();

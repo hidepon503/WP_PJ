@@ -12,7 +12,6 @@ use App\Models\PostImage;
 use App\Models\PostVideo;
 
 
-
 class PostController extends Controller
 {
     /**

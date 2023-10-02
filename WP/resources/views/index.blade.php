@@ -61,7 +61,7 @@
 
 <section class="mt-24 container mx-auto">
   <p class="text-center text-2xl">お知らせ</p>
-  <h2 class="mt-2 font-bold font-heading text-center text-3xl">営業時間や新メンバーなど様々な情報をお届け</h2>
+  <h2 class="mt-2 font-bold font-heading text-center text-3xl">新しい保護団体さんや新着ネコさんのご紹介</h2>
 
   <ul class="mt-8">
     <li class="flex py-4 border-t border-b"><p class="font-bold w-40">2022. 3. 4（水）</p><p class="bg-gray-100 text-gray-400 px-3">カテゴリ</p><a href="#" class="ml-4 text-blue-500">キャットフードなどの販売をはじめました</a></li>
@@ -77,8 +77,8 @@
 
 <section class="mt-24">
   <div class="container mx-auto">
-    <p class="text-center text-2xl">ブログ</p>
-    <h2 class="mt-2 font-bold font-heading text-center text-3xl">ほぼ毎日お店でねこの様子をお届け！！</h2>
+    <p class="text-center text-2xl">保護団体のブログ</p>
+    <h2 class="mt-2 font-bold font-heading text-center text-3xl"></h2>
 
     <div class="my-8 pb-4 border-b">
       <p class="text-lg text-left">カテゴリ / ねこちゃん</p>
@@ -109,9 +109,9 @@
               <ul class="flex">
                 <li class="bg-gray-100 text-gray-400 text-xs mr-2 py-1 px-2">＃ねこちゃん</li>
                 <li class="bg-gray-100 text-gray-400 text-xs py-1 px-2 mr-2">＃ねこちゃん</li>
-                <li class="bg-gray-100 text-gray-400 text-xs py-1 px-2">＃ねこちゃん</li>
+          
               </ul>
-              <p class="font-medium font-semibold">店長</p>
+              <p class="font-medium font-semibold">ツキネコ北海道</p>
             </div>
           </div>
         </div>
@@ -132,9 +132,9 @@
               <ul class="flex">
                 <li class="bg-gray-100 text-gray-400 text-xs mr-2 py-1 px-2">＃ねこちゃん</li>
                 <li class="bg-gray-100 text-gray-400 text-xs py-1 px-2 mr-2">＃ねこちゃん</li>
-                <li class="bg-gray-100 text-gray-400 text-xs py-1 px-2">＃ねこちゃん</li>
+              
               </ul>
-              <p class="font-medium font-semibold">店長</p>
+              <p class="font-medium font-semibold">もりねこ</p>
             </div>
           </div>
         </div>
@@ -154,23 +154,22 @@
             <div class="flex justify-between">
               <ul class="flex">
                 <li class="bg-gray-100 text-gray-400 text-xs mr-2 py-1 px-2">＃ねこちゃん</li>
-                <li class="bg-gray-100 text-gray-400 text-xs py-1 px-2 mr-2">＃ねこちゃん</li>
-                <li class="bg-gray-100 text-gray-400 text-xs py-1 px-2">＃ねこちゃん</li>
+
               </ul>
-              <p class="font-medium font-semibold">高橋</p>
+              <p class="font-medium font-semibold">保護猫カフェさくら</p>
             </div>
           </div>
         </div>
       </article>
     </div>
 
-    <div class="mt-8 text-center">
+    <div class="my-12 text-center">
       <a href="#" class="inline-block text-xs text-white font-semibold leading-none rounded py-4 text-blue-500 border-solid bg-white border-blue-500 border-2 px-16 hover:text-white hover:bg-blue-500">もっと見る</a>
     </div>
   </div>
-</section>
+</section >
 
-<section id="access" class="mt-24 pb-24 bg-gray-100">
+{{-- <section id="access" class="mt-24 pb-24 bg-gray-100">
   <div class="container mx-auto">
     <p class="text-center pt-10 text-2xl">アクセス</p>
     <h2 class="mt-2 font-bold font-heading text-center text-3xl h-24">ご来店をお待ちしております！</h2>
@@ -202,5 +201,5 @@
       <a href="/contact" class="inline-block text-xs text-white font-semibold leading-none rounded py-4 text-blue-700 border-solid bg-white border-blue-700 border-2 px-16 hover:text-white hover:bg-blue-700">お問い合わせ</a>
     </div>
   </div>
-</section>
+</section> --}}
 @endsection

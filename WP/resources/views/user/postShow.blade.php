@@ -10,8 +10,6 @@
 .carousel-inner .carousel-item img.vertical, .carousel-inner .carousel-item video.vertical {
     object-fit: contain !important; /* 縦長の画像やビデオにこのスタイルが適用されるようにします */
 }
-
-
 </style>
 @section('catManu')
 @include('user.component.postShow')

@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Cat\CatController;
 use App\Http\Controllers\Admin\AdminMatchingController;
 use App\Http\Controllers\Admin\AdminUserCatController;
-use App\Http\Controllers\Cat\CatPostController;
+
 
 
 // adminアカウント登録画面表示
@@ -43,17 +43,19 @@ Route::middleware('auth:admin')->group(function(){
     Route::post('/cats/{cat}/delete',[CatController::class, 'destroy'])->name('delete.cats');
 
     // マッチングした猫のPOST投稿ページ表示
-    Route::get('/matching/{cat}/create',[CatPostController::class, 'create'])->name('postCat.create');
+    Route::get('/matching/{cat}/post',[CatController::class, 'make'])->name('postCat.create');
     // マッチングした猫のPOST投稿送信
-    Route::post('/matching/{cat}/post',[CatPostController::class, 'store'])->name('postCat.store');
+    Route::post('/matching/{cat}/post',[CatController::class, 'save'])->name('postCat.store');
     // マッチングした猫のPOST内容表示
-    Route::get('/matching/{cat}/post/{post}',[CatPostController::class, 'show'])->name('postCat.show');
+    Route::get('/matching/{cat}/post/{post}',[CatController::class, 'postShow'])->name('postCat.show');
+
+
     // マッチングした猫のPOST編集ページ表示
-    Route::get('/matching/{cat}/post/{post}/edit',[CatPostController::class, 'edit'])->name('postCat.edit');
+    Route::get('/matching/{cat}/post/{post}/edit',[CatController::class, 'postEdit'])->name('postCat.edit');
     // マッチングした猫のPOST編集送信
-    Route::patch('/matching/{cat}/post/{post}',[CatPostController::class, 'update'])->name('postCat.update');
+    Route::patch('/matching/{cat}/post/{post}',[CatController::class, 'postUpdate'])->name('postCat.update');
     // マッチングした猫のPOST削除
-    Route::delete('/matching/{cat}/post/{post}',[CatPostController::class, 'destroy'])->name('postCat.destroy');
+    Route::delete('/matching/{cat}/post/{post}',[CatController::class, 'postDestroy'])->name('postCat.destroy');
 
 
 
