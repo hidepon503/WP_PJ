@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\Cat;
 
+use App\Http\Controllers\Controller;
+use App\Models\Post;
+use Illuminate\Http\Request;
 use App\Models\Cat;
 use App\Models\Admin;
 use App\Models\Gender;
 use App\Models\Kind;
 use App\Models\Status;
-use Illuminate\Http\Request;
 use App\Http\Requests\CatRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use App\Models\CatImage;
 use Carbon\Carbon;
 use App\Models\UserCat;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
-use App\Models\Post;
 use App\Models\PostImage;
 use App\Models\PostVideo;
 
@@ -98,8 +98,10 @@ class CatController extends Controller
             $cat->image = $imageName;  
             $cat->save();  // imageを更新するために再度保存
         }
+        $post_images = $request->file('post_images');
+        $post_videos = $request->file('post_videos');
 
-        return redirect()->route('index.cats')->with('success', '猫情報を登録しました。');
+        return redirect()->route('index.cats',compact())->with('success', '猫情報を登録しました。');
     }
 
     /**猫の詳細画面**/
@@ -126,15 +128,25 @@ class CatController extends Controller
         foreach ($userCats as $userCat) {
             $userByCat[$userCat->cat_id] = User::find($userCat->user_id);
         }
-
+        
         //postテーブルのcat_idと一致するレコードを取得
         $posts = Post::with(['images', 'videos'])->where('cat_id', $cat->id)->get();
+        //postテーブルのidと一致するレコードを取得
+        $postIds = $posts->pluck('id');
+        
+        // $post_image = PostImage::where('post_id', $posts->id())->first();
+        // $post_video = PostVideo::where('post_id', $posts->id())->first();
+        
+        foreach ($posts as $post) {
+            $post->image = PostImage::where('post_id', $post->id)->first();
+            $post->video = PostVideo::where('post_id', $post->id)->first();
+        }
         
         foreach ($posts as $post) {
             $post->getFirstMedia();
         }
         
-        return view('cats.show', compact('admin','cat','age','userByCat','posts'));
+        return view('cats.show', compact('cat','age','userByCat','posts'));
     }
 
     /**
@@ -150,7 +162,7 @@ class CatController extends Controller
         $genders = Gender::all();
         $kinds = Kind::all();
 
-        return view('cats.edit', compact('admin','cat','age','genders','kinds'));
+        return view('cats.edit', compact('admin','cat', 'age','genders','kinds'));
     }
 
     /**

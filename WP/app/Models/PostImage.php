@@ -11,8 +11,13 @@ class PostImage extends Model
 
     protected $fillable = ['post_id', 'image_path'];
 
-    public function post()
+    public function userPosts()
     {
-        return $this->belongsTo(Post::class);
+        return $this->belongsTo(UserPost::class);
+    }
+
+    public function postCats()
+    {
+        return $this->belongsTo(PostCat::class);
     }
 }

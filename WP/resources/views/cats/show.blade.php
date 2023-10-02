@@ -21,11 +21,11 @@
             @if(isset($userByCat[$cat->id]))
                 <span class="inline-flex items-center gap-1.5 py-0.5 px-2 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
                     <span>
-                        {{ $userByCat[$cat->id]->name }}
+                        ユーザー：{{ $userByCat[$cat->id]->name }}
                     </span>
                 </span>
             @else
-                <span>ユーザーなし</span>
+                <span>未定</span>
             @endif
         </p>
         <p>種類：{{ $cat->kind->kind }}</p>
@@ -56,21 +56,21 @@
   </div>
 {{-- @include('cats.component.createButton') --}}
 <div class="container mx-auto mb-6">
-    <a href="{{ route("post.create", ['cat' => $cat->id]) }}">
+    <a href="{{ route("postCat.create", ['cat' => $cat->id]) }}">
         <button class="mt-6 text-white font-semibold leading-none bg-blue-600 hover:bg-blue-700 rounded py-4 w-full" type="submit">新規投稿</button>
     </a>
 </div>
 {{-- @include('cats.component.postIndex') --}}
   <div class="flex flex-wrap -m-4">
     @foreach($posts as $post)
-    <a class="w-1/3" href="{{ route('post.show',['cat' => $cat->id, 'post' => $post->id]) }}">
+    <a class="w-1/3" href="{{ route('postCat.show',['cat' => $cat->id, 'post' => $post->id]) }}">
       <div class=" lg: sm: p-4">
         <div class="flex relative">
-          @if($post->media_type == 'image')
-          <img alt="gallery" class="absolute inset-0 w-full h-40 object-cover object-center" src="{{ asset('storage/' . $post_images->image_path) }}">
-          @elseif($post->media_type == 'video')
+          @if($post->media_type == 'image' && $post->image)
+          <img alt="gallery" class="absolute inset-0 w-full h-40 object-cover object-center" src="{{ asset('storage/' . $post->image->image_path) }}">
+          @elseif($post->media_type == 'video' && $post->video)
           <video class="absolute inset-0 w-full h-40 object-cover object-center" controls>
-            <source src="{{ asset('storage/app/public/' . $post_videos->video_path) }}" type="video/mp4">
+            <source src="{{ asset('storage/app/public/' . $post->video->video_path) }}" type="video/mp4">
             </video>
             @endif
             <div class="px-8 py-10 relative z-10 w-full h-40 border-4 border-gray-200 bg-white opacity-0 hover:opacity-50">

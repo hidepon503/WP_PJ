@@ -6,7 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MatchingController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserPostController;
 
 Route::get('/', function () {
     return view('index');
@@ -60,20 +60,21 @@ Route::middleware(['auth', 'verified'])->group(function () {
 // 未実装ここまで
 
     // マッチングした猫の詳細表示
-    Route::get('/matching/{cat}/', [MatchingController::class, 'show'])->name('matching.show');
+    Route::get('/matching/{cat}', [MatchingController::class, 'show'])->name('matching.show');
 
     // マッチングした猫のPOST投稿ページ表示
-    Route::get('/matching/{cat}/post',[PostController::class, 'create'])->name('post.create');
+    Route::get('/matching/{cat}/post',[UserPostController::class, 'create'])->name('userPost.create');
+
     // マッチングした猫のPOST投稿送信
-    Route::post('/matching/{cat}/post',[PostController::class, 'store'])->name('post.store');
+    Route::post('/matching/{cat}/post',[UserPostController::class, 'store'])->name('userPost.store');
     // マッチングした猫のPOST内容表示
-    Route::get('/matching/{cat}/post/{post}',[PostController::class, 'show'])->name('post.show');
+    Route::get('/matching/{cat}/post/{post}',[UserPostController::class, 'show'])->name('userPost.show');
     // マッチングした猫のPOST編集ページ表示
-    Route::get('/matching/{cat}/post/{post}/edit',[PostController::class, 'edit'])->name('post.edit');
+    Route::get('/matching/{cat}/post/{post}/edit',[UserPostController::class, 'edit'])->name('post.edit');
     // マッチングした猫のPOST編集送信
-    Route::patch('/matching/{cat}/post/{post}',[PostController::class, 'update'])->name('post.update');
+    Route::patch('/matching/{cat}/post/{post}',[UserPostController::class, 'update'])->name('post.update');
     // マッチングした猫のPOST削除
-    Route::delete('/matching/{cat}/post/{post}',[PostController::class, 'destroy'])->name('post.destroy');
+    Route::delete('/matching/{cat}/post/{post}',[UserPostController::class, 'destroy'])->name('post.destroy');
 
     
 

@@ -34,14 +34,14 @@ class Cat extends Model
     {
         return Carbon::parse($this->birthday)->age;
     }
-    public function post()
+    public function userPosts()
     {
-        return $this->hasMany('App\Models\Post');
+        return $this->hasMany(UserPost::class);
     }
 
     public function admin()
     {
-        return $this->belongsTo('App\Models\Admin');
+        return $this->belongsTo(Admin::class);
     }
 
     public function users()
@@ -83,6 +83,10 @@ class Cat extends Model
     public function favoritedByUsers()
     {
         return $this->belongsToMany(User::class, 'favorites');
+    }
+    public function postCat()
+    {
+        return $this->hasMany('App\Models\PostCat');
     }
 
 

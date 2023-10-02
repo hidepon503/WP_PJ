@@ -6,12 +6,11 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Cat;
-use App\Models\Request as RequestModel;
 use App\Models\UserCat;
 use App\Models\Matching;
 use App\Models\PostImage;
 use App\Models\PostVideo;
+
 
 
 class PostController extends Controller
@@ -53,11 +52,12 @@ class PostController extends Controller
         $gender = $matching->cat->gender;
 
         // マッチングしたねこのpost投稿ページにリダイレクト
-        return redirect()->route('post.create', compact('matching',  'user_cat', 'age','admin', 'kind', 'gender'));
+        return view('user.post', compact('matching',  'user_cat', 'age','admin', 'kind', 'gender'));
     }
+
+    //  return redirect()->route('matching.show',['posts' => $posts]); // 適切なルートにリダイレクト
+    // }
     
-
-
 
     /**
      * Store a newly created resource in storage.

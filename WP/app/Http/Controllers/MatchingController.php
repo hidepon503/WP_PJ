@@ -124,7 +124,7 @@ class MatchingController extends Controller
         $kind = $matching->cat->kind;
         $gender = $matching->cat->gender;
 
-        return view('user.matchingShow', compact('matching',  'user_cat', 'age','admin', 'kind', 'gender', 'posts', ));
+        return view('user.matchingShow', compact('matching', 'user_cat', 'age','admin', 'kind', 'gender', 'posts', ));
     }
 
     // マッチングした猫の各種申請ページを表示

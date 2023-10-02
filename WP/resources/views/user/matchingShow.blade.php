@@ -4,7 +4,7 @@
 
 {{-- @include('user.component.postCreate') --}}
 <div class="container mx-auto mb-6">
-    <a href="{{ route('post.create', ['cat' => $matching->cat_id]) }}">
+    <a href="{{ route('userPost.create', ['cat' => $matching->cat_id]) }}">
         <button class="mt-6 text-white font-semibold leading-none bg-blue-600 hover:bg-blue-700 rounded py-4 w-full" type="submit">新規投稿</button>
     </a>
 </div>
@@ -12,7 +12,7 @@
 {{-- @include('user.component.postIndex') --}}
   <div class="flex flex-wrap -m-4">
     @foreach($posts as $post)
-    <a class="w-1/3" href="{{ route('post.show', ['cat' => $matching->cat_id, 'user' => auth()->id(), 'post' => $post->id]) }}) }}">
+    <a class="w-1/3" href="{{ route('userPost.show', ['cat' => $matching->cat_id, 'user' => auth()->id(), 'post' => $post->id]) }}) }}">
       <div class=" lg: sm: p-4">
         <div class="flex relative">
           @if($post->media_type == 'image')

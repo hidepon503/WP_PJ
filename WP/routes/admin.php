@@ -43,17 +43,17 @@ Route::middleware('auth:admin')->group(function(){
     Route::post('/cats/{cat}/delete',[CatController::class, 'destroy'])->name('delete.cats');
 
     // マッチングした猫のPOST投稿ページ表示
-    Route::get('/matching/{cat}/create',[CatPostController::class, 'create'])->name('post.create');
+    Route::get('/matching/{cat}/create',[CatPostController::class, 'create'])->name('postCat.create');
     // マッチングした猫のPOST投稿送信
-    Route::post('/matching/{cat}/post',[CatPostController::class, 'store'])->name('post.store');
+    Route::post('/matching/{cat}/post',[CatPostController::class, 'store'])->name('postCat.store');
     // マッチングした猫のPOST内容表示
-    Route::get('/matching/{cat}/post/{post}',[CatPostController::class, 'show'])->name('post.show');
+    Route::get('/matching/{cat}/post/{post}',[CatPostController::class, 'show'])->name('postCat.show');
     // マッチングした猫のPOST編集ページ表示
-    Route::get('/matching/{cat}/post/{post}/edit',[CatPostController::class, 'edit'])->name('post.edit');
+    Route::get('/matching/{cat}/post/{post}/edit',[CatPostController::class, 'edit'])->name('postCat.edit');
     // マッチングした猫のPOST編集送信
-    Route::patch('/matching/{cat}/post/{post}',[CatPostController::class, 'update'])->name('post.update');
+    Route::patch('/matching/{cat}/post/{post}',[CatPostController::class, 'update'])->name('postCat.update');
     // マッチングした猫のPOST削除
-    Route::delete('/matching/{cat}/post/{post}',[CatPostController::class, 'destroy'])->name('post.destroy');
+    Route::delete('/matching/{cat}/post/{post}',[CatPostController::class, 'destroy'])->name('postCat.destroy');
 
 
 
