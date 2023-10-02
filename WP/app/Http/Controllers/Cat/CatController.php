@@ -75,6 +75,8 @@ class CatController extends Controller
         $form = $request->all();
         unset($form['_token']);
 
+        $admin = Auth::guard('admin')->user();
+
         // 管理者IDの取得と代入はこの一行で十分
         $form['admin_id'] = Auth::guard('admin')->id();
         // kind_idの取得と代入はこの一行で十分
@@ -101,7 +103,7 @@ class CatController extends Controller
         $post_images = $request->file('post_images');
         $post_videos = $request->file('post_videos');
 
-        return redirect()->route('index.cats',compact())->with('success', '猫情報を登録しました。');
+        return redirect()->route('index.cats')->with('success', '猫情報を登録しました。');
     }
 
     /**猫の詳細画面**/

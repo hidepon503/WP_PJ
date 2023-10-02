@@ -42,7 +42,6 @@ class AdminsTableSeeder extends Seeder
             'town' => '代々木上原',
             'street' => '25丁目1-6',
             'building' => 'ツキネコカフェ', 
-            
         ];
         Admin::create($param);
 
