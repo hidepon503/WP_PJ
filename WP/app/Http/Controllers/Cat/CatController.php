@@ -336,48 +336,88 @@ class CatController extends Controller
         return view('cats.show', compact('cat','age','userByCat', 'posts')); 
     }
 
-public function postShow($cat, Post $post)
-{
-    // Catの取得
-    $cat = Cat::findOrFail($cat);
+    public function postShow($cat, Post $post)
+    {
+        // Catの取得
+        $cat = Cat::findOrFail($cat);
 
-    // マッチングデータの取得
-    $matching = Matching::where('cat_id', $cat->id)->first();
+        // マッチングデータの取得
+        $matching = Matching::where('cat_id', $cat->id)->first();
 
-    // ログインしている管理者の情報の取得
-    $admin = Auth::guard('admin')->user();
+        // ログインしている管理者の情報の取得
+        $admin = Auth::guard('admin')->user();
 
-    // ユーザーと猫のリレーションデータの取得
-    $userCats = UserCat::where('cat_id', $cat->id)->with('user')->get();
-    $userByCat = [];
-    foreach ($userCats as $userCat) {
-        $userByCat[$userCat->cat_id] = $userCat->user;
+        // ユーザーと猫のリレーションデータの取得
+        $userCats = UserCat::where('cat_id', $cat->id)->with('user')->get();
+        $userByCat = [];
+        foreach ($userCats as $userCat) {
+            $userByCat[$userCat->cat_id] = $userCat->user;
+        }
+
+        // 猫の年齢計算
+        if($cat->birthday) {
+            $birthday = new \Carbon\Carbon($cat->birthday);
+            $now = \Carbon\Carbon::now();
+            $age = $now->diffInYears($birthday); 
+        } else {
+            $age = null; 
+        }
+
+        // 投稿の画像と動画の取得
+        $post_images = PostImage::where('post_id', $post->id)->get();
+        $post_videos = PostVideo::where('post_id', $post->id)->get();
+
+        // ビューにデータを渡して表示
+        return view('cats.postShow', compact(
+            'cat', 
+            'matching', 
+            'userByCat', 
+            'age', 
+            'admin', 
+            'post_images', 
+            'post_videos', 
+            'post'
+        ));
     }
 
-    // 猫の年齢計算
-    if($cat->birthday) {
-        $birthday = new \Carbon\Carbon($cat->birthday);
-        $now = \Carbon\Carbon::now();
-        $age = $now->diffInYears($birthday); 
-    } else {
-        $age = null; 
+    // postShow画面からpostsテーブルのレコードを削除
+    public function postDestroy(Cat $cat, Post $post)
+    {
+        // レコードの削除
+        $post->delete();
+
+         $cat->load('admin','gender','kind');
+
+        // ここでは、猫の年齢を計算しています。
+        $age = Carbon::parse($cat->birthday)->age;
+
+        // まず、ログインしている管理者の情報を取得しています。
+        $admin = Auth::guard('admin')->user();
+
+        $catIds = $cat->pluck('id');
+        $userCats = UserCat::whereIn('cat_id', $catIds)->with('user')->get();
+        // cat_idをキーとして、関連するユーザーを取得
+        $userByCat = [];
+        foreach ($userCats as $userCat) {
+            $userByCat[$userCat->cat_id] = User::find($userCat->user_id);
+        }
+        
+        //postテーブルのcat_idと一致するレコードを取得
+        $posts = Post::with(['images', 'videos'])->where('cat_id', $cat->id)->get();
+        //postテーブルのidと一致するレコードを取得
+        $postIds = $posts->pluck('id');
+        
+        foreach ($posts as $post) {
+            $post->image = PostImage::where('post_id', $post->id)->first();
+            $post->video = PostVideo::where('post_id', $post->id)->first();
+        }
+        
+        foreach ($posts as $post) {
+            $post->getFirstMedia();
+        }
+
+        // リダイレクト
+        return redirect()->route('show.cats', compact('cat', 'age','userByCat','posts'))->with('success', '投稿を削除しました。');
     }
-
-    // 投稿の画像と動画の取得
-    $post_images = PostImage::where('post_id', $post->id)->get();
-    $post_videos = PostVideo::where('post_id', $post->id)->get();
-
-    // ビューにデータを渡して表示
-    return view('cats.postShow', compact(
-        'cat', 
-        'matching', 
-        'userByCat', 
-        'age', 
-        'admin', 
-        'post_images', 
-        'post_videos', 
-        'post'
-    ));
-}
 
 }

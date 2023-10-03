@@ -107,6 +107,13 @@
                 {{ $post->body }}
             </p>
         </div>
+        <div>
+            {{-- 削除ボタンを用意し、name('postCat.destroy');のルートでpostsテーブルの指定したレコードを削除する --}}
+            <form action="{{ route('postCat.destroy', [$cat->id, $post->id]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="py-2 px-3 text-xs text-white font-semibold bg-red-500 rounded-md">削除</button>
+        </div>
     </div>
 </section>
 @endsection
