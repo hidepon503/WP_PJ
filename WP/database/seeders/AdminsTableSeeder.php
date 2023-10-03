@@ -16,7 +16,7 @@ class AdminsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $param = [
+        $param = [//1
             'name' => 'ツキネコ北海道',
             'email' => '1@gmail.com',
             'password' => Hash::make('11111111'),
@@ -31,7 +31,7 @@ class AdminsTableSeeder extends Seeder
         ];
         Admin::create($param);
 
-        $param = [
+        $param = [//2
             'name' => 'ツキネコ東京',
             'email' => '2@gmail.com',
             'password' => Hash::make('22222222'),
@@ -45,7 +45,7 @@ class AdminsTableSeeder extends Seeder
         ];
         Admin::create($param);
 
-        $param = [
+        $param = [//3
             'name' => '保護猫カフェさくら',
             'email' => '3@gmail.com',
             'password' => Hash::make('33333333'),
@@ -60,7 +60,7 @@ class AdminsTableSeeder extends Seeder
         ];
         Admin::create($param);
 
-        $param = [
+        $param = [//4
             'name' => 'もりねこ',
             'email' => '4@gmail.com',
             'password' => Hash::make('44444444'),
@@ -75,7 +75,7 @@ class AdminsTableSeeder extends Seeder
         ];
         Admin::create($param);
 
-        $param = [
+        $param = [//5
             'name' => '里親の会川口',
             'email' => '5@gmail.com',
             'password' => Hash::make('55555555'),

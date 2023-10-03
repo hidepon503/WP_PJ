@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'name' => '佐藤 花子',
-                'email' => '2@example.com',
+                'email' => '2@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('22222222'),
                 'remember_token' => Str::random(10),
@@ -53,7 +53,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'name' => '鈴木 一郎',
-                'email' => '3@example.com',
+                'email' => '3@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('33333333'),
                 'remember_token' => Str::random(10),
@@ -85,7 +85,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'name' => 'ジーズ 一郎',
-                'email' => '5@example.com',
+                'email' => '5@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('55555555'),
                 'remember_token' => Str::random(10),

@@ -35,22 +35,22 @@ class CatController extends Controller
     {
         // adminが登録した猫情報の一覧取得
         $admin = Auth::guard('admin')->user();
-        $cats = Cat::where('admin_id', $admin->id)->get();
+        $cats = Cat::where('admin_id', $admin->id)->paginate(50);
+
         // 各猫に対して、年齢を計算して付加する
-        $cats = $cats->map(function($cat) {
+        $cats->getCollection()->transform(function ($cat) {
             $cat->age = Carbon::parse($cat->birthday)->age;
             return $cat;
         });
 
         $catIds = $cats->pluck('id');
         $userCats = UserCat::whereIn('cat_id', $catIds)->with('user')->get();
+
         // cat_idをキーとして、関連するユーザーを取得
         $userByCat = [];
         foreach ($userCats as $userCat) {
             $userByCat[$userCat->cat_id] = User::find($userCat->user_id);
         }
-        
-        $cats = Cat::paginate(50);
         
         return view('cats.index', compact('admin','cats','userByCat'));
     }
