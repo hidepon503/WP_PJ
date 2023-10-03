@@ -330,11 +330,11 @@ class MatchingController extends Controller
 
         // matchingsテーブルのcat_idと同じcatテーブルのレコードのstatus_idを変更
         $cat = Cat::find($cat_id);
-        $cat->status_id = '3';//迷子中
+        $cat->status_id = '3';//家族決定
         $cat->save();
 
         // リクエストから受け取ったrequest_idでカラムを更新
-        $matching->request_id = $request->input('request_id');
+        $matching->request_id = 2;
         $matching->save();
 
         // ログインしているユーザーのIDと一致するuser_idを持つレコードをuser_catsテーブルから取得し、変数に代入。さらにuser_catsテーブルと外部キー接続しているrelationsテーブルから、nameを取得する。
