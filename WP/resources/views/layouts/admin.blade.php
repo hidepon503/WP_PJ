@@ -141,7 +141,7 @@
                         <span>看取り申請一覧</span>
                       </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="flex items-center pl-3 py-3 pr-4 text-gray-50 hover:bg-gray-900 rounded" href="/admin/contacts">
                           <span class="inline-block mr-3">
                             <svg class="text-gray-600 w-5 h-5" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -150,10 +150,13 @@
                           </span>
                           <span>お問い合わせ管理</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
                 </div>
-                <div class="absolute bottom-2 left-4 right-4">
+                <div class="h-auto">
+
+                
+                <div class=" bottom-2 left-4 right-4">
                     <a class="w-full flex items-center pl-3 py-3 pr-2 text-gray-50 hover:bg-gray-900 rounded" href="#">
                       <span class="inline-block mr-4">
                         <svg class="text-gray-600 w-5 h-5" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -176,6 +179,7 @@
                           <span>ログアウト</span>
                         </button>
                     </form>
+                </div>
                 </div>
             </div>
         </nav>
