@@ -152,8 +152,8 @@
                         </a>
                     </li>
                 </ul>
-              </div>
-              <div class="absolute bottom-2 left-4 right-4">
+                </div>
+                <div class="absolute bottom-2 left-4 right-4">
                     <a class="w-full flex items-center pl-3 py-3 pr-2 text-gray-50 hover:bg-gray-900 rounded" href="#">
                       <span class="inline-block mr-4">
                         <svg class="text-gray-600 w-5 h-5" viewbox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -163,6 +163,7 @@
                       <span>設定</span>
                     </a>
                   </div>
+
                   <div>
                     <form action="{{ ('/admin/logout') }}" method="POST">
                         @csrf
