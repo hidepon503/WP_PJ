@@ -23,7 +23,7 @@ class CatRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:20480',
             'admin_id' => 'required|integer|exists:admins,id',
             'user_id' => 'nullable|integer|exists:users,id',
             'gender_id' => 'required|integer|exists:genders,id',
