@@ -197,8 +197,22 @@ class CatController extends Controller
     
         $age = Carbon::parse($cat->birthday)->age;
         $admin = Auth::guard('admin')->user();
+
+        //postテーブルのcat_idと一致するレコードを取得
+        $posts = Post::with(['images', 'videos'])->where('cat_id', $cat->id)->get();
+        //postテーブルのidと一致するレコードを取得
+        $postIds = $posts->pluck('id');
+        
+        foreach ($posts as $post) {
+            $post->image = PostImage::where('post_id', $post->id)->first();
+            $post->video = PostVideo::where('post_id', $post->id)->first();
+        }
+        
+        foreach ($posts as $post) {
+            $post->getFirstMedia();
+        }
     
-        return view('cats.show', compact('admin', 'cat', 'age'));
+        return view('cats.show', compact('admin', 'cat', 'age', 'posts'));
     }
 
     /**
