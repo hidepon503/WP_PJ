@@ -14,7 +14,7 @@
     <script src="/js/admin/select2.min.js"></script>
 </head>
 <body class="antialiased bg-body text-body font-body">
-<div>
+<div class="">
     <!-- ▼▼▼▼共通ヘッダー(SP)▼▼▼▼　-->
     <nav class="lg:hidden py-6 px-6 bg-gray-800">
         <div class="flex items-center justify-between">
@@ -30,7 +30,7 @@
     </nav>
     <!-- ▲▲▲▲共通ヘッダー(SP)▲▲▲▲　-->
     <!-- ▼▼▼▼共通サイドナビ▼▼▼▼　-->
-    <div class="hidden lg:block navbar-menu relative z-50">
+    <div class="hidden lg:block navbar-menu relative  z-50">
         <div class="navbar-backdrop fixed lg:hidden inset-0 bg-gray-800 opacity-10"></div>
         <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-3/4 lg:w-80 sm:max-w-xs pt-6 pb-8 bg-gray-800 overflow-y-auto">
             <h1 class="px-6 pb-6 mb-6 lg:border-b border-gray-700">
@@ -99,7 +99,7 @@
                         <span>契約者一覧</span>
                       </a>
                     </li>
-        {{--未実装  --}}
+               {{--未実装  --}}
                     <li>
                       <a class="flex items-center pl-3 py-3 pr-4 text-gray-50 hover:bg-gray-900 rounded" href="{{ route('lost.index') }}">
                         <span class="inline-block mr-3">
@@ -120,7 +120,7 @@
                         <span>発見報告一覧</span>
                       </a>
                     </li>
-              {{-- 未実装ここまで --}}
+               {{-- 未実装ここまで --}}
                     <li>
                       <a class="flex items-center pl-3 py-3 pr-4 text-gray-50 hover:bg-gray-900 rounded" href="{{ route('return.index') }}">
                         <span class="inline-block mr-3">
@@ -161,7 +161,8 @@
                       </span>
                       <span>設定</span>
                     </a>
-
+                  </div>
+                  <div>
                     <form action="{{ ('/admin/logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="w-full flex items-center pl-3 py-3 pr-2 text-gray-50 hover:bg-gray-900 rounded">
