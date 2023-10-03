@@ -277,7 +277,8 @@ class CatController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'body' => 'required|string',
-            'media.*' => 'required|mimes:jpeg,png,jpg,gif,mp4,avi,mkv|max:20480', // 20MBの上限
+            'media' => 'required', // 最低でも1つのファイルがアップロードされていることを確認
+            'media.*' => 'mimes:jpeg,png,jpg,gif,mp4,avi,mkv|max:20480', // 20MBの上限
         ]);
         // Postの作成
         $post = new Post();
