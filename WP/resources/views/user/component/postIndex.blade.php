@@ -1,4 +1,4 @@
-  <div class="flex flex-wrap -m-4">
+  <div class="flex flex-wrap  -m-4">
     @foreach($posts as $post)
     <a class="w-1/3" href="{{ route('post.show', ['cat' => $matching->cat_id, 'user' => auth()->id(), 'post' => $post->id]) }}) }}">
       <div class=" lg: sm: p-4">

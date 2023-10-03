@@ -28,9 +28,6 @@
                 <input id="image" class="block w-full px-4 py-3 mb-2" type="file" accept='image/*' name="image" >
             </div>
 
-
-
-
             <div class="pl-16 ">
                 {{-- CSSグリッドを利用した２カラムレイアウトで、猫の詳細を表示 --}}
                 <div class="grid grid-cols-4 gap-x-16 gap-y-8 text-2xl">
@@ -69,6 +66,12 @@
                 
                     <label for="cat-introduction" class="grid-item col-span-1 font-bold">紹介文</label>
                     <textarea id="cat-introduction" name="introduction" class="grid-item col-span-3 border bg-gray-100 shadow-md">{{ old('introduction', $cat->introduction) }}</textarea>
+                    <label for="">公開設定</label>
+                    <select id="category" class="grid-item col-span-3 border bg-gray-100 shadow-md" name="status_id">
+                            <option value="2">募集中</option>
+                            <option value="1">準備中</option>
+                    </select>
+
                 
                     
                 

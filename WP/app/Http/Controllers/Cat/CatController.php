@@ -386,7 +386,7 @@ class CatController extends Controller
         // レコードの削除
         $post->delete();
 
-         $cat->load('admin','gender','kind');
+        $cat->load('admin','gender','kind');
 
         // ここでは、猫の年齢を計算しています。
         $age = Carbon::parse($cat->birthday)->age;
