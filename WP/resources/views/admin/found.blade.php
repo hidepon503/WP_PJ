@@ -4,7 +4,8 @@
 
 @section('content')
 @include('admin.management-component', [
-  'managementTitle' => '発見報告一覧'
+  'managementTitle' => '発見報告一覧',
+  'app' => 'found.approve'
   ])
 
 @endsection

@@ -141,7 +141,7 @@
         </td>
 
         <td class="h-px w-px whitespace-nowrap">
-          <form action="{{ route('match.approve', $matching->id) }}" method="post">
+          <form action="{{ route($app, $matching->id) }}" method="post">
               @csrf
               <button class="inline-block px-4 h-8 text-xs font-semibold leading-none bg-blue-500 hover:bg-blue-600 text-white rounded ml-3" type="submit">受理</button>
           </form>

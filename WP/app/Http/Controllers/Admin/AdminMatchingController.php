@@ -107,7 +107,7 @@ class AdminMatchingController extends Controller
     {
         $matching = Matching::find($matchingId);
         $matching->request_id = '5';
-        $matching->save();
+        $matching->update();
 
         // cat_idと一致するcatsテーブルのidのレコードのstatusカラムを1（準備中）に変更する
         $cat = Cat::where('id', $matching->cat_id)->update(['status_id' => '1']);
@@ -159,7 +159,7 @@ class AdminMatchingController extends Controller
             ->where('request_id', 8)
             ->get();
 
-        return view('admin.lost', ['matchings' => $matchings]);
+        return view('admin.found', ['matchings' => $matchings]);
     }
 
     public function foundApprove($matchingId)
@@ -194,7 +194,7 @@ class AdminMatchingController extends Controller
         $matching->save();
 
         // cat_idと一致するcatsテーブルのidのレコードのstatusカラムを1（準備中）に変更する
-        $cat = Cat::where('id', $matching->cat_id)->update(['status_id' => '1']);
+        $cat = Cat::where('id', $matching->cat_id)->update(['status_id' => '7']);
 
         // user_id と cat_id が一致するレコードの更新を行う
         UserCat::where('user_id', $matching->user_id)

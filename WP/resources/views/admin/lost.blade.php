@@ -4,7 +4,9 @@
 
 @section('content')
 @include('admin.management-component', [
-  'managementTitle' => '迷子申請一覧'
+  'managementTitle' => '迷子申請一覧',
+  'app' => 'lost.approve'
+
   ])
 
   

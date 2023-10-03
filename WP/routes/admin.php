@@ -59,8 +59,6 @@ Route::middleware('auth:admin')->group(function(){
 
 
 
-
-
     // 保護団体が登録した猫のマッチング申請一覧表示
     Route::get('/match',[AdminMatchingController::class, 'index'])->name('match.index');
     // マッチング申請の拒否一覧の表示

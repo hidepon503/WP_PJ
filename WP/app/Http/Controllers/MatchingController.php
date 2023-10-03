@@ -338,7 +338,7 @@ class MatchingController extends Controller
         $matching->save();
 
         // ログインしているユーザーのIDと一致するuser_idを持つレコードをuser_catsテーブルから取得し、変数に代入。さらにuser_catsテーブルと外部キー接続しているrelationsテーブルから、nameを取得する。
-        // $user_cat = UserCat::where('user_id', auth()->id())->where('cat_id', $cat_id)->with('relation')->first();
+        $user_cat = UserCat::where('user_id', auth()->id())->where('cat_id', $cat_id)->with('relation')->first();
         //迷子は契約中になるため、user_catsテーブルにレコードを更新する必要はない。
 
         if($matching->cat->birthday) {
@@ -385,7 +385,7 @@ class MatchingController extends Controller
         return view('user.dead', compact('matching', 'user_cat', 'age','admin', 'kind', 'gender'));
     }
     
-    // 引取り依頼の送信（モーダル風）
+    // deadの送信（モーダル風）
     public function deadRequest(Request $request,$cat_id, $user_id)
     {
         // cat_idとuser_idを使って、正確なmatchingを取得
