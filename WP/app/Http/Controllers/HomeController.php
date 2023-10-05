@@ -144,7 +144,7 @@ class HomeController extends Controller
     public function search(Request $request)
     {
         // catsテーブルから登録された猫の情報をstatus_idが2, 3, 4のものだけ取得し、8匹ずつページネーションで表示する。猫の表示順序は、登録日時の最新順。
-        $cats = Cat::whereIn('status_id', [2, 4])->orderBy('created_at', 'desc')->paginate(8);
+        $cats = Cat::whereIn('status_id', [2, 4])->orderBy('created_at', 'desc')->paginate(40);
 
         
         // 2. 各Catインスタンスにリアルタイムの年齢を計算するメソッドを追加
@@ -224,7 +224,7 @@ class HomeController extends Controller
         }
 
         // 結果を並べ替えてページングします。
-        $cats = $query->paginate(8);
+        $cats = $query->paginate(40);
 
             // 以前と同様に、各猫の実際の年齢を計算します。
             foreach ($cats as $cat) {
@@ -320,7 +320,7 @@ public function lostchildSearch(Request $request)
     }
 
     // 結果を並べ替えてページングします。ページネーションは8件ずつ
-    $cats = $query->paginate(8);
+    $cats = $query->paginate(40);
 
     // 以前と同様に、各猫の実際の年齢を計算します。
     foreach ($cats as $cat) {
