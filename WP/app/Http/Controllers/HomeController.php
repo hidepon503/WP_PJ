@@ -260,83 +260,81 @@ class HomeController extends Controller
         return view('user.lostchildSearch',compact('cats','genders','kinds','areas'));
     }
 
-        // 猫の検索結果画面を表示。
-    public function lostchildSearch(Request $request)
-    {
-        $query = Cat::query(); // 空のクエリから開始します。
-        // リクエストデータをセッションに保存
-        $request->flash();
+// 猫の検索結果画面を表示。
+public function lostchildSearch(Request $request)
+{
+    $query = Cat::query()
+        ->whereIn('status_id', [5, 6]) // status_idが2, 3, 4のものを絞り込む
+        ->orderBy('created_at', 'desc'); // 登録日の最新順に並べ替え
 
-        // セッションにクエリパラメータを保存
-        $request->session()->put('search_parameters', $request->all());
-
-        // prefectureが設定されているか確認し、該当する猫の情報を検索します。
-        if ($request->filled('prefecture')) {
-            // adminsテーブルのprefectureカラムを参照して絞り込む
-            $query->whereHas('admin', function($q) use ($request) {
-                $q->where('prefecture', $request->input('prefecture'));
-            });
-        }
-
-        // gender_idが設定されているか確認し、クエリに追加します。
-        if ($request->filled('gender_id')) {
-            $query->where('gender_id', $request->input('gender_id'));
-        }
-        // kind_idが設定されているか確認し、クエリに追加します。
-        if ($request->filled('kind_id')) {
-            $query->where('kind_id', $request->input('kind_id'));
-        }
-
-        // 年齢の範囲でのフィルタリング
-        if ($request->filled('min_age') || $request->filled('max_age')) {
-            $maxDate = $request->filled('min_age') 
-                ? now()->subYears($request->input('min_age'))->format('Y-m-d')
-                : now()->format('Y-m-d');  // 最小年齢からの日付もしくは今日
-        
-            $minDate = $request->filled('max_age')
-                ? now()->subYears($request->input('max_age'))->format('Y-m-d') 
-                : null;  // 最大年齢からの日付もしくはnull
-        
-            if ($minDate) {
-                $query->whereBetween('birthday', [$minDate, $maxDate]);
-            } else {
-                $query->where('birthday', '<=', $maxDate);
-            }
-        }
-
-        // 並べ替えのロジックを追加
-        $order = $request->input('order', 'created_at_desc'); // デフォルトは登録順の降順
-
-        switch ($order) {
-            case 'age_asc':
-                $query->orderBy('birthday', 'asc'); // 年齢の昇順
-                break;
-            case 'age_desc':
-                $query->orderBy('birthday', 'desc'); // 年齢の降順
-                break;
-            case 'created_at_asc':
-                $query->orderBy('created_at', 'asc'); // 登録日の昇順
-                break;
-            default: // 'created_at_desc'
-                $query->orderBy('created_at', 'desc'); // 登録日の降順
-                break;
-        }
-
-        // 結果を並べ替えてページングします。
-        $cats = $query->paginate(8);
-
-            // 以前と同様に、各猫の実際の年齢を計算します。
-            foreach ($cats as $cat) {
-                $cat->age = $this->calculateAge($cat->birthday);
-            }
-
-            // 以前と同様に、gendersとkindsを取得します。
-            $genders = Gender::all();
-            $kinds = Kind::all();
-            $areas = Area::all();
-
-            return view('user.lostchildSearch', compact('cats', 'genders', 'kinds', 'areas'));
+    // prefectureが設定されているか確認し、該当する猫の情報を検索します。
+    if ($request->filled('prefecture')) {
+        // adminsテーブルのprefectureカラムを参照して絞り込む
+        $query->whereHas('admin', function($q) use ($request) {
+            $q->where('prefecture', $request->input('prefecture'));
+        });
     }
+
+    // gender_idが設定されているか確認し、クエリに追加します。
+    if ($request->filled('gender_id')) {
+        $query->where('gender_id', $request->input('gender_id'));
+    }
+    // kind_idが設定されているか確認し、クエリに追加します。
+    if ($request->filled('kind_id')) {
+        $query->where('kind_id', $request->input('kind_id'));
+    }
+
+    // 年齢の範囲でのフィルタリング
+    if ($request->filled('min_age') || $request->filled('max_age')) {
+        $maxDate = $request->filled('min_age') 
+            ? now()->subYears($request->input('min_age'))->format('Y-m-d')
+            : now()->format('Y-m-d');  // 最小年齢からの日付もしくは今日
+    
+        $minDate = $request->filled('max_age')
+            ? now()->subYears($request->input('max_age'))->format('Y-m-d') 
+            : null;  // 最大年齢からの日付もしくはnull
+    
+        if ($minDate) {
+            $query->whereBetween('birthday', [$minDate, $maxDate]);
+        } else {
+            $query->where('birthday', '<=', $maxDate);
+        }
+    }
+
+    // 並べ替えのロジックを追加
+    $order = $request->input('order', 'created_at_desc'); // デフォルトは登録順の降順
+
+    switch ($order) {
+        case 'age_asc':
+            $query->orderBy('birthday', 'asc'); // 年齢の昇順
+            break;
+        case 'age_desc':
+            $query->orderBy('birthday', 'desc'); // 年齢の降順
+            break;
+        case 'created_at_asc':
+            $query->orderBy('created_at', 'asc'); // 登録日の昇順
+            break;
+        default: // 'created_at_desc'
+            $query->orderBy('created_at', 'desc'); // 登録日の降順
+            break;
+    }
+
+    // 結果を並べ替えてページングします。ページネーションは8件ずつ
+    $cats = $query->paginate(8);
+
+    // 以前と同様に、各猫の実際の年齢を計算します。
+    foreach ($cats as $cat) {
+        $cat->age = $this->calculateAge($cat->birthday);
+    }
+
+    // 以前と同様に、gendersとkindsを取得します。
+    $genders = Gender::all();
+    $kinds = Kind::all();
+    $areas = Area::all();
+
+    return view('user.lostchildSearch', compact('cats', 'genders', 'kinds', 'areas'));
+}
+
 
 
 
