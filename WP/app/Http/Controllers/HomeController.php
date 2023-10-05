@@ -335,7 +335,7 @@ class HomeController extends Controller
             $kinds = Kind::all();
             $areas = Area::all();
 
-            return view('user.lostchildSearchResult', compact('cats', 'genders', 'kinds', 'areas'));
+            return view('user.lostchildSearch', compact('cats', 'genders', 'kinds', 'areas'));
     }
 
 

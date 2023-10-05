@@ -33,8 +33,8 @@
 
 <section class="py-20 bg-blueGray-50">
     <div class="container px-4 mx-auto">
-        <h2>保護猫検索</h2>
-        <form action="{{ route('search.result') }}" method='get'>
+        <h2>迷子猫検索</h2>
+        <form action="{{ route('lostchild.searchResult') }}" method='get'>
             <div class=" mt-12 mb-6">
                 <div class="flex items-center mr-20">
                     <label class="block mr-6 text-sm font-medium mb-2" for="image">エリア</label>
