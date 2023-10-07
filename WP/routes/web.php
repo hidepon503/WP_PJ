@@ -76,10 +76,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // マッチングした猫のPOST削除
     Route::delete('/matching/{cat}/post/{post}',[MatchingController::class, 'postDestroy'])->name('post.destroy');
 
-    
-
-
-
 
     // マッチングした猫の各種申請ページ表示
     Route::get('/matching/{cat}/{user}/application',[MatchingController::class, 'application'])->name('application');
