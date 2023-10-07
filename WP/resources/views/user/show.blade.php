@@ -8,7 +8,7 @@
         {{-- @include('cats.component.postIndex') --}}
           <div class="flex flex-wrap -m-4">
     @foreach($posts as $post)
-    <a class="w-1/3" href="{{ route('userPost.create',['cat' => $cat->id, 'post' => $post->id]) }}">
+    <a class="w-1/3" href="{{ route('userPost.show',['cat' => $cat->id, 'post' => $post->id]) }}">
       <div class=" lg: sm: p-4">
         <div class="flex relative">
           @if($post->media_type == 'image' && $post->image)

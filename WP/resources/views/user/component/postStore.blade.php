@@ -1,7 +1,7 @@
 <section class="py-8">
     <div class="container px-4 mx-auto">
         <div class="py-4 bg-white rounded">
-            <form action="{{ route('userPost.store', ['cat' => $matching->cat_id, 'user' => auth() -> id()])  }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('userPost.store', ['cat' => $matching->cat_id, 'user' => auth() -> id()])  }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="flex px-6 pb-4">
                     <h3 class="text-xl font-bold">新規投稿</h3>
