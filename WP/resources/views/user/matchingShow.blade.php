@@ -12,7 +12,7 @@
 {{-- @include('user.component.postIndex') --}}
   <div class="flex flex-wrap -m-4">
     @foreach($posts as $post)
-    <a class="w-1/3" href="{{ route('userPost.show', ['cat' => $matching->cat_id, 'user' => auth()->id(), 'post' => $post->id]) }}) }}">
+    <a class="w-1/3" href="{{ route('userPost.show', ['cat' => $matching->cat_id, 'user' => auth()->id(), 'post' => $post->id]) }}">
       <div class=" lg: sm: p-4">
         <div class="flex relative">
           @if($post->media_type == 'image')
