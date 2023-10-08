@@ -5,8 +5,9 @@
 {{-- @include('user.component.postCreate') --}}
 <div class="container mx-auto mb-6">
     <a href="{{ route('userPost.create', ['cat' => $matching->cat_id]) }}">
-        <button class="mt-6 text-white font-semibold leading-none bg-blue-600 hover:bg-blue-700 rounded py-4 w-full" type="submit">新規投稿</button>
+        <button class="mt-6 text-white font-semibold leading-none bg-blue-600 hover:bg-blue-700 rounded py-4 w-full" type="submit">新規投稿 </button>
     </a>
+   
 </div>
 
 {{-- @include('user.component.postIndex') --}}

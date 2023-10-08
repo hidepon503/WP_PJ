@@ -3,22 +3,36 @@
 <style>
 .carousel-inner .carousel-item img, .carousel-inner .carousel-item video {
     width: 100%;
-    height: 400px;
-    object-fit: cover; /* これは横長のデフォルトの画像やビデオのスタイルとして設定しています */
+    height: auto;
+    object-fit: contain;
 }
 
 .carousel-inner .carousel-item img.vertical, .carousel-inner .carousel-item video.vertical {
-    object-fit: contain !important; /* 縦長の画像やビデオにこのスタイルが適用されるようにします */
+    object-fit: contain !important; 
 }
+
+.media-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.media-item {
+    flex: 1;
+    max-width: calc(50% - 20px); /* この部分が2つのアイテムを保持するのに十分な幅になるように計算されます */
+}
+
 </style>
 
 @section('content')
 
-    <div class="px-6 bg-white shadow rounded h-full py-10">
+    <div class="px-6 bg-white shadow rounded h-auto py-10">
 {{-- @include('cats.component.catShow') --}}
 <div class="flex pl-6 pt-12 items-center gap-x-4 ">
     <div class="w-40 h-40 rounded-full overflow-hidden">
-        <img class="w-full h-full object-cover" src="{{ asset('storage/images/cats/' .$cat->image )}}" alt="$cat->name">
+        <img class="d-block w-60" src="{{ asset('storage/images/cats/' .$cat->image )}}" alt="$cat->name">
     </div>
     <div class="grow pl-6">
         <h3 class="font-medium text-gray-800 dark:text-gray-200">
@@ -73,47 +87,38 @@
 </div> --}}
 {{-- @include('cats.component.postShow') --}}
 <section class="text-gray-600 body-font">
-    <div class="container mx-auto flex flex-col px-5 py-24 justify-center items-center">
+    {{-- <div class="container mx-auto flex flex-col px-5 py-2 justify-center items-center"> --}}
         
         <!-- Carousel -->
-        <div id="mediaCarousel" class="carousel slide w-full h-auto" data-ride="carousel">
-            <div class="carousel-inner">
-                @foreach($post_images as $key => $image)
-                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                        <img src="{{ asset('storage/' . $image->image_path) }}" class="d-block w-100" alt="{{ $image->name }}">
-                    </div>
-                @endforeach
-                @foreach($post_videos as $key => $video)
-                    <div class="carousel-item {{ count($post_images) == 0 && $key == 0 ? 'active' : '' }}">
-                        <video controls class="d-block w-100">
-                            <source src="{{ asset('storage/' . $video->video_path) }}" type="video/mp4">
-                        </video>
-                    </div>
-                @endforeach
+<div class="container mx-auto flex flex-col px-5 py-6 justify-center items-center">
+    <div class="media-container">
+        @foreach($post_images as $key => $image)
+            <div class="media-item">
+                <img src="{{ asset('storage/' . $image->image_path) }}" class="d-block w-100" alt="{{ $image->name }}">
             </div>
-            <a class="carousel-control-prev" href="#mediaCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#mediaCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
-        <div class="w-full md:w-2/3 flex flex-col mb-16 items-center text-center">
-            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $post->title }}</h1>
-            <p class="mb-8 leading-relaxed">
-                {{ $post->body }}
-            </p>
-        </div>
-        <div>
-            {{-- 削除ボタンを用意し、name('postCat.destroy');のルートでpostsテーブルの指定したレコードを削除する --}}
-            <form action="{{ route('postCat.destroy', [$cat->id, $post->id]) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="py-2 px-3 text-xs text-white font-semibold bg-red-500 rounded-md">削除</button>
-        </div>
+        @endforeach
+        @foreach($post_videos as $key => $video)
+            <div class="media-item">
+                <video controls class="d-block w-100">
+                    <source src="{{ asset('storage/' . $video->video_path) }}" type="video/mp4">
+                </video>
+            </div>
+        @endforeach
     </div>
+
+    <div class="w-full md:w-2/3 flex flex-col mb-2 items-center text-center">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">{{ $post->title }}</h1>
+        <p class="mb-8 leading-relaxed">
+            {{ $post->body }}
+        </p>
+    </div>
+    <div>
+        {{-- 削除ボタンを用意し、name('postCat.destroy');のルートでpostsテーブルの指定したレコードを削除する --}}
+        <form action="{{ route('postCat.destroy', [$cat->id, $post->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="py-2 px-3 text-xs text-white font-semibold bg-red-500 rounded-md">削除</button>
+    </div>
+</div>
 </section>
 @endsection

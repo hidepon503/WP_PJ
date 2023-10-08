@@ -69,12 +69,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/matching/{cat}/post',[MatchingController::class, 'postStore'])->name('userPost.store');
     // マッチングした猫のPOST内容表示
     Route::get('/matching/{cat}/post/{post}',[MatchingController::class, 'postShow'])->name('userPost.show');
-    // マッチングした猫のPOST編集ページ表示
-    Route::get('/matching/{cat}/post/{post}/edit',[MatchingController::class, 'postEdit'])->name('post.edit');
-    // マッチングした猫のPOST編集送信
-    Route::patch('/matching/{cat}/post/{post}',[MatchingController::class, 'postUpdate'])->name('post.update');
-    // マッチングした猫のPOST削除
-    Route::delete('/matching/{cat}/post/{post}',[MatchingController::class, 'postDestroy'])->name('post.destroy');
+    // // マッチングした猫のPOST編集ページ表示
+    // Route::get('/matching/{cat}/post/{post}/edit',[MatchingController::class, 'postEdit'])->name('post.edit');
+    // // マッチングした猫のPOST編集送信
+    // Route::patch('/matching/{cat}/post/{post}',[MatchingController::class, 'postUpdate'])->name('post.update');
+    // // マッチングした猫のPOST削除
+    // Route::delete('/matching/{cat}/post/{post}',[MatchingController::class, 'postDestroy'])->name('post.destroy');
 
 
     // マッチングした猫の各種申請ページ表示
