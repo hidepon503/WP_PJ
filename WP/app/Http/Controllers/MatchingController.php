@@ -132,7 +132,7 @@ class MatchingController extends Controller
     //マッチングした猫のpost投稿ページを表示
         public function postCreate($cat_id)
     {
-        dd('yy');
+        
         // cat_idとuser_idを使って、正確なmatchingを取得
         $matching = Matching::where('cat_id', $cat_id)->where('user_id', auth()->id())->first();
 
